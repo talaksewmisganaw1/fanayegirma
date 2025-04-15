@@ -1,0 +1,96 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.section {
+  width: 100%;
+  height: 100%;
+}
+
+.opening {
+  display: none;
+  position: relative;
+  grid-template-columns: 1fr 1fr;
+}
+.opening .delius {
+  font-family: "Delius", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5rem;
+}
+.opening .left-opening {
+  display: flex;
+  justify-content: flex-end;
+}
+.opening .left-opening .hey-and-i {
+  position: absolute;
+  top: 10rem;
+  padding: 2rem;
+}
+.opening .left-opening .hey-and-i .hey {
+  padding-right: 3rem;
+}
+.opening .left-opening .hey-and-i .i {
+  display: flex;
+  justify-content: flex-end;
+}
+.opening .right-opening .am-architect {
+  position: absolute;
+  top: 16rem;
+  padding: 2.4rem 1rem;
+}
+.opening .right-opening .am-architect .architect {
+  padding-left: 3rem;
+}
+.opening .name {
+  position: absolute;
+  top: 60%;
+  display: flex;
+  width: 96%;
+  justify-content: center;
+  margin-left: 3.5rem;
+  padding-left: 6rem;
+  margin-top: -1.5rem;
+  font-family: "Rouge Script", cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 8rem;
+}
+
+#projects-tab {
+  width: 100%;
+}
+#projects-tab nav {
+  padding: 0 5rem 0 2.5rem;
+  background-color: #eee;
+  display: flex;
+  height: 5rem;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+}
+#projects-tab nav .menus {
+  display: flex;
+  height: 100%;
+}
+#projects-tab nav .menus a {
+  text-decoration: none;
+  color: inherit;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+#projects-tab nav .menus a:hover {
+  background-color: #ddd;
+}/*# sourceMappingURL=styles.css.map */
