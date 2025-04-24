@@ -1,0 +1,7 @@
+@media screen and (max-width: 900px) {
+    #projects-tab {
+        .projects {
+            grid-template-columns: 1fr;
+        }
+    }
+}
