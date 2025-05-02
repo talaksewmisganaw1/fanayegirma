@@ -1,3 +1,4 @@
+const body = document.querySelector("body");
 const projectsContainer = document.querySelector(".projects");
 const menusContainer = document.querySelector(".menus");
 const menus = document.querySelectorAll(".menu");
@@ -14,6 +15,9 @@ const floorDots = document.querySelectorAll(".floor-dot");
 const elevDots = document.querySelectorAll(".elev-dot");
 const sectionDots = document.querySelectorAll(".section-dot");
 const backBtn = document.querySelector(".back-btn");
+const preloader = document.querySelector(".loader");
+const opening = document.querySelector(".opening");
+const fanayeText = document.querySelector(".name");
 
 // ***************************
 const projectDetail = document.querySelector(".project-detail");
@@ -21,6 +25,23 @@ const projectDetail = document.querySelector(".project-detail");
 
 // ***************************
 
+window.addEventListener("load", () => {
+    preloader.style.display="none";
+    opening.style.display="grid";
+    body.style.overflow="hidden";
+    setTimeout(() => {
+        opening.classList.add("animate-opening");
+        fanayeText.classList.add("fanaye-logo");
+        body.style.overflow="auto";
+    }, 200)
+    body.classList.add("visible-body");
+    // body.style.overflow="hidden";
+})
+
+
+// tabs.forEach(tab => {
+//     tab.classList.contains("section-tab")?tab.classList.remove("section-tab"):tab.classList.add("section-tab");
+// })
 
 const projectsList = [{
     imageUrl: `images/lalibela-hotel.png`,
@@ -114,7 +135,6 @@ projectsList.forEach(item => {
     <div class="sub-titles">
     <h2 class="sb-title sb-title-1">${item.subtitle1}</h2>
     <h2 class="sb-title year">Year: ${item.year}</h2>
-    <h2 class="sb-title location">Location: ${item.location}</h2>
     </div>
     <p class="description">
     ${item.description}
@@ -129,14 +149,27 @@ projectsList.forEach(item => {
 })
 
 
+//opening full view
 const viewBtn = document.querySelectorAll(".view-btn");
 viewBtn.forEach(btn => {
-    btn.addEventListener("click", () => {;
+    btn.addEventListener("click", () => {
+        // console.log(body.style.height)
+        fanayeText.style.display="none";
         projectDetail.classList.add("visible-detail");
-        projectsContainer.style.height="90vh";
-        projectsContainer.style.overflow="hidden";
+        body.style.height="90vh";
+        body.style.overflow="hidden";
         backBtn.classList.add("visible-back-btn");
     })
+})
+
+//closing full view
+backBtn.addEventListener("click", () => {
+    // console.log(projectDetail.classList);
+    fanayeText.style.display="flex";
+    projectDetail.classList.remove("visible-detail");
+    body.style.height="inherit";
+    body.style.overflow="auto";
+    backBtn.classList.remove("visible-back-btn");
 })
 
 
@@ -294,11 +327,3 @@ sectionBtns.forEach(btn => {
     })
 })
 
-//closing full view
-backBtn.addEventListener("click", () => {
-    // console.log(projectDetail.classList);
-    projectDetail.classList.remove("visible-detail");
-    projectsContainer.style.height="auto";
-    projectsContainer.style.overflow="auto";
-    backBtn.classList.remove("visible-back-btn");
-})

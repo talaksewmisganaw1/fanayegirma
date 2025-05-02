@@ -7,11 +7,25 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Delius&family=Rouge+Script&family=Playfair+Display&family=Lato&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <section class="section opening">
+    <div class="name">
+        Fanaye Girma
+    </div>
+    <section class="loader tab">
+        <div class="loader-container">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+    <section class="section-tab tab visible-opening opening">
         <div class="left-opening">
             <div class="hey-and-i delius">
                 <div class="hey">Hey!</div>
@@ -24,14 +38,12 @@
                 <div class="architect">Architect</div>
             </div>
         </div>
-        <div class="name">
-            Fanaye Girma
-        </div>
     </section>
-    <section class="section" id="projects-tab">
+    <section class="section-tab tab" id="projects-tab">
         <button class="back-btn"><i class="fa-solid fa-arrow-left"></i></button>
         <nav>
-            <div class="logo">logo</div>
+            <div class="logo">
+            </div>
             <ul class="menus">
                 <a href="#projects-tab" class="projects-menu menu active-menu">Projects</a>
                 <a href="#about-tab" class="about-menu menu">About</a>
@@ -47,8 +59,7 @@
                     <h1 class="title">Lalibela-Hotel</h1>
                     <div class="sub-titles">
                         <h2 class="sb-title sb-title-1">10<sup>th</sup> semester project</h2>
-                        <h2 class="sb-title year">Year: 2016 E.C</h2>
-                        <h2 class="sb-title location">Location: Woldiya</h2>
+                        <h2 class="sb-title year">Year: <span>2016 E.C.</span></h2>
                     </div>
                     <p class="description">This project is a thesis design proposal which i did for my graduation research by thinking adaptability of anicient ethiopian architectural wisdom.
                         The concept of this project is adapting lalibela architecture to contemporary architecture in hotel design according to primary elements of design.
@@ -195,6 +206,255 @@
                 <button class="download-btn">Download CAD file <i class="fa-solid fa-download"></i></button>
             </div>
         </div>
+    </section>
+    <section class="section-tab tab" id="about-tab">
+        <div class="divisions">
+            <div class="about-txt">
+                <h1 class="hi">Hi!!</h1>
+                <p class="explanation">I am <span class="about-name">Fanaye Girma</span> a recent graduate architect from Woldia University.
+                    A passionate Architect dedicated to creating beautiful and functional architectural and other designs. I love creating ideas that solve problems.</p>
+                <div class="quote-box">
+                    <p class="quote">"We shape our buildings; thereafter they shape us."</p>
+                    <p class="author">-- Winston Churchill</p>
+                </div>
+            </div>
+            <div class="image-and-bgr">
+                <img src="images/main-photo2.png" alt="my photo" class="main-img"/>
+                <img src="images/green-bgr4.png" alt="background shape" class="bgr">
+            </div>
+        </div>
+        <div class="profiles-container">
+            <div class="profiles">
+                <div class="profile work-experience">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-briefcase"></i></span><span class="line"></span>Work Experience<span class="line2"></span></h1>
+                    <div class="profile-description  experience">
+                        <div class="sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Mark Consulting Architects</span>
+                                </li>
+                            </ul>
+                            <span class="year">Oct 30 - Jan 12, 2016 E.C.</span>
+                        </div>
+                        <h3 class="role">Intern</h3>
+                    </div>
+                    <div class="profile-description experience">
+                        <div class="sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Freelance Architectural Designer</span>
+                                </li>
+                            </ul>
+                            <span class="year">2015 E.C. – Present</span>
+                        </div>
+                        <h3 class="role">Freelancer</h3>
+                    </div>                    
+                </div>
+                <div class="profile academic-projects">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-bars-progress"></i></span><span class="line"></span>Academic Projects<span class="line2"></span></h1>
+                    <div class="profile-description">
+                        <div class="project-yr sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Sem 10 - Adaptable Hotel</span>
+                                </li>
+                            </ul>
+                            <span class="year">2016 E.C.</span>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        <div class="project-yr sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Sem 09 - Hight Rise Hotel</span>
+                                </li>
+                            </ul>
+                            <span class="year">2016 E.C.</span>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        <div class="project-yr sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Sem 08 - Stadium Design</span>
+                                </li>
+                            </ul>
+                            <span class="year">2015 E.C.</span>
+                        </div>
+                    </div>
+                    <div class="profile-description">
+                        <div class="project-yr sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Sem 07 - Urban Planning</span>
+                                </li>
+                            </ul>
+                            <span class="year">2015 E.C.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile education">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-graduation-cap"></i></span><span class="line"></span>Education<span class="line2"></span></h1>
+                    <div class="profile-description">
+                        <div class="sb-ttl-yr">
+                            <ul>
+                                <li>
+                                    <span class="sub-title">Bachelor of Architecture</span>
+                                </li>
+                            </ul>
+                            <span class="year">2012 - 2017 E.C.</span>
+                        </div>
+                        <h3 class="place">Woldia University</h3>
+                    </div>
+                </div>
+                <div class="profile soft-skills">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-handshake"></i></span><span class="line"></span>Soft skills<span class="line2"></span></h1>
+                    <ul class="lists">
+                        <li>Critical thinking</li>
+                        <li>Communication</li>
+                        <li>Problem solving</li>
+                    </ul>
+                </div>
+                <div class="profile languages">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-globe"></i></i></span><span class="line"></span>languages<span class="line2"></span></h1>
+                    <ul class="lists">
+                        <li>Amharic</li>
+                        <li>English</li>
+                    </ul>
+                </div>
+                <div class="profile hobbies">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-book"></i></span><span class="line"></span>Hobby<span class="line2"></span></h1>
+                    <ul class="lists">
+                        <li>Watching movies</li>
+                        <li>Reading books</li>
+                    </ul>
+                </div>
+                <div class="profile softwares">
+                    <h1 class="title"><span class="icon-container"><i class="fa-solid fa-desktop"></i></span><span class="line"></span>Software skills<span class="line2"></span></h1>
+                    <ul class="logos">
+                        <li class="logo ms-office"><img src="images/msoffice-logo.png" alt="Auto CAD"></li>
+                        <li class="logo"><img src="images/autocad-logo.png" alt="Auto CAD"><h5 class="sftwr-name">Auto CAD</h5></li>
+                        <li class="logo revit"><img src="images/revit.png" alt="Auto CAD" class="revit-img"><h5 class="sftwr-name">Revit</h5></li>
+                        <li class="logo lumion"><img src="images/lumion.png" alt="Auto CAD" class="lumion-img"></li>
+                        <li class="logo photoshop"><img src="images/photoshop-logo.png" alt="Auto CAD"></li>
+                        <li class="logo illustrator"><img src="images/illustrator-logo.png" alt="Auto CAD"></li>
+                        <li class="logo sketchup"><img src="images/sketchup.png" alt="Auto CAD"></li>
+                    </ul>
+                </div>
+            </div> 
+        </div>       
+    </section>
+    <section class="section-tab tab" id="contact-tab">
+            <div class="contact-container">
+                <div class="main-title">
+                    <h2>Contact <span>Me</span></h2>
+                </div>
+                <div class="contact-content-con">
+                    <div class="left-contact">
+                        <h4>Let's Connect!</h4>
+                        <p class="contact-msg">
+                            If you'd like to discuss a project or just say hello, I’d be happy to hear from you. Let’s connect and explore new possibilities together.
+                        </p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Location :
+                                </div>
+                                <p>
+                                     Addis Ababa, Ethiopia
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fa-solid fa-phone"></i>
+                                    Phone :
+                                </div>
+                                <p>
+                                    <a class="tel" href="tel:+251921266469">+251921266469</a>
+                                </p>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="fa-solid fa-envelope"></i>
+                                    Email :
+                                </div>
+                                <p class="email">
+                                    <a href="mailto:girmafanaye5@gmail.com">girmafanaye5@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-btns">
+                            <!-- <a href="https://www.linkedin.com/in/talaksew-misganaw-a51a58253" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/talaksew.agegnehu" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+                            <a href="https://t.me/talaksewmisganaw" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="https://wa.me/+251904673003" target="_blank"><i class="fa-brands fa-whatsapp"></i></a> -->
+
+                            <a class="icon-container" href="https://t.me/fanayegirma">
+                                <div class="icon telegram"> <!-- <i class="main-icon fa-brands fa-square-facebook"></i> -->
+                                        <span class="main-icon"><i class="fa-brands fa-telegram"></i></i></span>
+                                        <span class="layer"></span>
+                                        <span class="layer"></span>
+                                        <span class="layer"></span>
+                                        <!-- <span><i class="fa-brands fa-facebook-f"></i></span> -->
+                                </div>
+                                <div class="text">Telegram</div>
+                            </a>
+                            <a class="icon-container">
+                                <div class="icon whatsapp"> <!-- <i class="main-icon fa-brands fa-square-facebook"></i> -->
+                                        <span class="main-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span><i class="fa-brands fa-facebook-f"></i></span> -->
+                                </div>
+                                <div class="text">WhatsApp</div>
+                            </a>
+                            <a class="icon-container">
+                                <div class="icon instagram"> <!-- <i class="main-icon fa-brands fa-square-facebook"></i> -->
+                                        <span class="main-icon"><i class="fa-brands fa-instagram"></i></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span><i class="fa-brands fa-facebook-f"></i></span> -->
+                                </div>
+                                <div class="text">Instagram</div>
+                            </a>
+                            <a class="icon-container">
+                                <div class="icon facebook"> <!-- <i class="main-icon fa-brands fa-square-facebook"></i> -->
+                                        <span class="main-icon"><i class="fa-brands fa-facebook-f"></i></span>
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <!-- <span><i class="fa-brands fa-facebook-f"></i></span> -->
+                                </div>
+                                <div class="text">Facebook</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="right-contact">
+                        <h1>Leave me a message here. I’ll receive it instantly!</h1>
+                        <form id="contact-form" action="" class="contact-form">
+                            <div class="input-control ic2">
+                                <input type="text" name="name" class="input-field" required placeholder="YOUR NAME">
+                                <input type="email" name="email" class="input-field" required placeholder="YOUR EMAIL">
+                            </div>
+                            <div class="input-control">
+                                <input type="text" name="subject" class="input-field" required placeholder="ENTER SUBJECT">
+                            </div>
+                            <div class="input-control">
+                                <textarea name="message" class="input-field" id="" cols="15" rows="8" placeholder="Message Here..."></textarea>
+                            </div>
+                            <div class="submit-btn">
+                                <button class="main-btn">
+                                    <span class="btn-text">Send</span>
+                                    <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
     </section>
     <script src="script.js"></script>
 </body>

@@ -15,6 +15,7 @@
   --box-shadow-1: 0 0 30px rgba(0, 0, 0, 0.06);
   --box-shadow-2: 0 0 10px #add994;
   --border-1: 1px solid #b2ef8f;
+  font-size: 0.96vw;
 }
 
 html, body {
@@ -22,55 +23,101 @@ html, body {
   width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lato", sans-serif;
   background-color: var(--main-bgr);
   color: var(--body-clr);
+  overflow: hidden;
+  position: relative;
 }
 
-.opening {
-  width: 100%;
-  height: 100%;
-  display: none;
+.loader {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+  background-color: var(--bgr-clr-2);
+}
+.loader .loader-container {
+  --uib-size: 40px;
+  --uib-color: black;
+  --uib-speed: 1.5s;
+  --dot-size: calc(var(--uib-size) * 0.17);
   position: relative;
-  grid-template-columns: 1fr 1fr;
-}
-.opening .delius {
-  font-family: "Delius", cursive;
-  font-weight: 700;
-  font-style: normal;
-  font-size: 5rem;
-}
-.opening .left-opening {
-  border: 1px solid blueviolet;
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--uib-size);
+  width: var(--uib-size);
+  animation: smoothRotate calc(var(--uib-speed) * 1.8) linear infinite;
 }
-.opening .left-opening .hey-and-i {
+.loader .loader-container .dot {
   position: absolute;
-  top: 10rem;
-  padding: 2rem;
-}
-.opening .left-opening .hey-and-i .hey {
-  padding-right: 3rem;
-}
-.opening .left-opening .hey-and-i .i {
+  top: 0;
+  left: 0;
   display: flex;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  animation: rotate var(--uib-speed) ease-in-out infinite;
 }
-.opening .right-opening {
-  border: 1px solid red;
+.loader .loader-container .dot::before {
+  content: "";
+  height: var(--dot-size);
+  width: var(--dot-size);
+  border-radius: 50%;
+  background-color: var(--uib-color);
+  transition: background-color 0.3s ease;
 }
-.opening .right-opening .am-architect {
-  position: absolute;
-  top: 16rem;
-  padding: 2.4rem 1rem;
+.loader .loader-container .dot:nth-child(2),
+.loader .loader-container .dot:nth-child(2)::before {
+  animation-delay: calc(var(--uib-speed) * -0.835 * 0.5);
 }
-.opening .right-opening .am-architect .architect {
-  padding-left: 3rem;
+.loader .loader-container .dot:nth-child(3),
+.loader .loader-container .dot:nth-child(3)::before {
+  animation-delay: calc(var(--uib-speed) * -0.668 * 0.5);
 }
-.opening .name {
-  position: absolute;
+.loader .loader-container .dot:nth-child(4),
+.loader .loader-container .dot:nth-child(4)::before {
+  animation-delay: calc(var(--uib-speed) * -0.501 * 0.5);
+}
+.loader .loader-container .dot:nth-child(5),
+.loader .loader-container .dot:nth-child(5)::before {
+  animation-delay: calc(var(--uib-speed) * -0.334 * 0.5);
+}
+.loader .loader-container .dot:nth-child(6),
+.loader .loader-container .dot:nth-child(6)::before {
+  animation-delay: calc(var(--uib-speed) * -0.167 * 0.5);
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  65%, 100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes smoothRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.name {
+  position: fixed;
   top: 60%;
   display: flex;
   width: 96%;
@@ -82,12 +129,96 @@ body {
   font-weight: 500;
   font-style: normal;
   font-size: 8rem;
+  transition: all 1s ease-in-out;
+  transition-delay: 0.3s;
+  z-index: 6;
 }
 
-#projects-tab {
+.fanaye-logo {
+  width: 15rem;
+  font-size: 3rem;
+  font-weight: 600;
+  top: 2.1rem;
+  left: 3rem;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.visible-body {
+  overflow: auto;
+}
+.visible-body .opening {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bgr-clr-2);
+  grid-template-columns: 1fr 1fr;
+  z-index: 5;
+}
+.visible-body .opening .delius {
+  font-family: "Delius", cursive;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 5rem;
+}
+.visible-body .opening .left-opening {
+  display: flex;
+  justify-content: flex-end;
+  transition: all 1s ease-in-out;
+  background-color: var(--bgr-clr-2);
+}
+.visible-body .opening .left-opening .hey-and-i {
+  position: absolute;
+  top: 10rem;
+  padding: 2rem;
+}
+.visible-body .opening .left-opening .hey-and-i .hey {
+  padding-right: 3rem;
+}
+.visible-body .opening .left-opening .hey-and-i .i {
+  display: flex;
+  justify-content: flex-end;
+}
+.visible-body .opening .right-opening {
+  transition: all 1s ease-in-out;
+  background-color: var(--bgr-clr-2);
+}
+.visible-body .opening .right-opening .am-architect {
+  position: absolute;
+  top: 16rem;
+  padding: 2.4rem 1rem;
+}
+.visible-body .opening .right-opening .am-architect .architect {
+  padding-left: 3rem;
+}
+.visible-body .visible-opening {
+  display: grid;
+}
+.visible-body .animate-opening {
+  visibility: hidden;
+}
+.visible-body .animate-opening .left-opening {
+  background-color: var(--bgr-clr-2);
+  transform: translateX(-100%);
+}
+.visible-body .animate-opening .right-opening {
+  background-color: var(--bgr-clr-2);
+  transform: translateX(100%);
+}
+.visible-body .animate-opening .name {
+  position: fixed;
+  top: 1rem;
+  left: 2rem;
+}
+.visible-body #projects-tab {
   width: 100%;
 }
-#projects-tab nav {
+.visible-body #projects-tab nav {
   padding: 0 5rem 0 2.5rem;
   background-color: var(--nav-bgr);
   display: flex;
@@ -100,11 +231,11 @@ body {
   top: 0;
   z-index: 2;
 }
-#projects-tab nav .menus {
+.visible-body #projects-tab nav .menus {
   display: flex;
   height: 100%;
 }
-#projects-tab nav .menus a {
+.visible-body #projects-tab nav .menus a {
   text-decoration: none;
   color: var(--nav-txt-clr);
   padding: 2rem;
@@ -112,20 +243,20 @@ body {
   display: flex;
   align-items: center;
 }
-#projects-tab nav .menus a:hover {
+.visible-body #projects-tab nav .menus a:hover {
   background-color: var(--nav-hover);
 }
-#projects-tab nav .menus a:active {
+.visible-body #projects-tab nav .menus a:active {
   background-color: var(--main-bgr);
 }
-#projects-tab .projects {
+.visible-body #projects-tab .projects {
   padding: 10rem 9rem;
   display: grid;
   grid-gap: 3rem;
   grid-template-columns: 1fr 1fr;
   grid-auto-rows: minmax(23rem, auto);
 }
-#projects-tab .projects .project {
+.visible-body #projects-tab .projects .project {
   position: relative;
   background-color: var(--bgr-clr-2);
   box-shadow: var(--box-shadow-1);
@@ -137,16 +268,71 @@ body {
   transition: all 0.4s ease-in-out;
   border-radius: 0.8rem;
 }
-#projects-tab .projects .project:hover {
+.visible-body #projects-tab .projects .project:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
   border: var(--border-1); /* Light green border */
   box-shadow: var(--box-shadow-2); /* Glowing effect */
 }
-#projects-tab .projects .project:hover .hidden-layer {
+.visible-body #projects-tab .projects .project:hover .hidden-layer button {
+  visibility: visible;
+  transform: translateY(0%);
+}
+.visible-body #projects-tab .projects .project:hover img {
+  transform: scale(1.05);
+}
+.visible-body #projects-tab .projects .project .image-container {
+  height: 100%;
+  width: 90%;
+  border-right: 8px solid var(--nav-bgr);
+  overflow: hidden;
+  border-bottom-left-radius: 0.8rem;
+  border-top-left-radius: 0.8rem;
+}
+.visible-body #projects-tab .projects .project .image-container img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transition: all 0.4s ease-in-out;
+}
+.visible-body #projects-tab .projects .project .text-container {
+  margin-left: -1rem;
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+.visible-body #projects-tab .projects .project .text-container .title {
+  font-size: 2.5rem;
+  color: var(--title-clr);
+}
+.visible-body #projects-tab .projects .project .text-container .sub-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.visible-body #projects-tab .projects .project .text-container .sub-titles .sb-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.visible-body #projects-tab .projects .project .text-container .sub-titles .sb-title span {
+  font-size: 1.2rem;
+}
+.visible-body #projects-tab .projects .project .text-container .description {
+  font-size: 1.2rem;
+}
+.visible-body #projects-tab .projects .project .hidden-layer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
   display: flex;
 }
-#projects-tab .projects .project:hover .hidden-layer button {
+.visible-body #projects-tab .projects .project .hidden-layer button {
   position: absolute;
   bottom: 0;
   z-index: 2;
@@ -156,66 +342,19 @@ body {
   font-size: 1.3rem;
   background-color: var(--nav-bgr);
   border: none;
-  box-shadow: 0 0 40px #add994 inset;
   border-bottom-left-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
+  transform: translateY(100%);
+  transition: all 0.2s ease-in-out;
 }
-#projects-tab .projects .project:hover .hidden-layer button .view-icon {
+.visible-body #projects-tab .projects .project .hidden-layer button .view-icon {
   padding-left: 0.5rem;
 }
-#projects-tab .projects .project:hover .hidden-layer button:hover {
+.visible-body #projects-tab .projects .project .hidden-layer button:hover {
   cursor: pointer;
+  box-shadow: var(--box-shadow-2) inset;
 }
-#projects-tab .projects .project .image-container {
-  height: 100%;
-  width: 85%;
-  border-right: 8px solid #aaa;
-}
-#projects-tab .projects .project .image-container img {
-  width: 100%;
-  height: 100%;
-  border-bottom-left-radius: 0.8rem;
-  border-top-left-radius: 0.8rem;
-}
-#projects-tab .projects .project .text-container {
-  margin-left: -2rem;
-  display: grid;
-  grid-gap: 1rem;
-}
-#projects-tab .projects .project .text-container .title {
-  font-family: "Playfair Display", serif;
-  font-size: 2.5rem;
-  align-self: end;
-  color: var(--title-clr);
-}
-#projects-tab .projects .project .text-container .sub-titles {
-  margin-top: -0.5rem;
-  padding-left: 0.2rem;
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  grid-gap: 0.5rem;
-}
-#projects-tab .projects .project .text-container .sub-titles .sb-title {
-  font-size: 1.4rem;
-  font-weight: 800;
-}
-#projects-tab .projects .project .text-container .sub-titles .sb-title-1 {
-  grid-row: 1/3;
-}
-#projects-tab .projects .project .text-container .description {
-  font-size: 1.2rem;
-  margin-left: 0.2rem;
-  padding-right: 0.3rem;
-}
-#projects-tab .projects .project .hidden-layer {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: none;
-}
-#projects-tab .project-detail {
+.visible-body #projects-tab .project-detail {
   display: hidden;
   position: fixed;
   width: 100%;
@@ -223,17 +362,17 @@ body {
   overflow: scroll;
   top: 0px;
   transform: translateX(100%);
-  z-index: 3;
+  z-index: 4;
   background-color: var(--main-bgr);
   transition: all 0.4s ease-in-out;
   grid-template-columns: 1fr 1fr;
   padding: 0 3rem;
 }
-#projects-tab .project-detail .detail {
+.visible-body #projects-tab .project-detail .detail {
   height: 50vw;
   margin-bottom: 1rem;
 }
-#projects-tab .project-detail .divider {
+.visible-body #projects-tab .project-detail .divider {
   padding: 0;
   margin: 0;
   height: 0.3rem;
@@ -241,19 +380,19 @@ body {
   background-color: silver;
   justify-self: center;
 }
-#projects-tab .project-detail .detail-description {
+.visible-body #projects-tab .project-detail .detail-description {
   padding: 4rem 1rem 0rem 5rem;
   position: relative;
 }
-#projects-tab .project-detail .detail-description .detail-title {
+.visible-body #projects-tab .project-detail .detail-description .detail-title {
   font-size: 3.2rem;
   margin-bottom: 1.5rem;
 }
-#projects-tab .project-detail .detail-description .caption-and-form {
+.visible-body #projects-tab .project-detail .detail-description .caption-and-form {
   display: flex;
   flex-direction: column;
 }
-#projects-tab .project-detail .detail-description .caption-and-form .detail-caption {
+.visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption {
   width: 90%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -265,24 +404,24 @@ body {
   font-size: 1.2rem;
   font-weight: 700;
 }
-#projects-tab .project-detail .detail-description .caption-and-form .detail-caption .caption-1 {
+.visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption .caption-1 {
   grid-row: 1/3;
   margin-right: 0.7rem;
 }
-#projects-tab .project-detail .detail-description .caption-and-form .detail-caption .year, #projects-tab .project-detail .detail-description .caption-and-form .detail-caption .location {
+.visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption .year, .visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption .location {
   margin-left: 6rem;
 }
-#projects-tab .project-detail .detail-description .caption-and-form .form-developement {
+.visible-body #projects-tab .project-detail .detail-description .caption-and-form .form-developement {
   z-index: -10;
   max-height: 6rem;
   overflow: hidden;
   margin-bottom: 3rem;
 }
-#projects-tab .project-detail .detail-description .detail-text {
+.visible-body #projects-tab .project-detail .detail-description .detail-text {
   margin-right: 3rem;
   font-size: 1.15rem;
 }
-#projects-tab .project-detail .detail-photo {
+.visible-body #projects-tab .project-detail .detail-photo {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -293,7 +432,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-#projects-tab .project-detail .detail-photo .images-container {
+.visible-body #projects-tab .project-detail .detail-photo .images-container {
   position: relative;
   height: 95%;
   width: 95%;
@@ -304,7 +443,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#projects-tab .project-detail .detail-photo .images-container .prev, #projects-tab .project-detail .detail-photo .images-container .next {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .prev, .visible-body #projects-tab .project-detail .detail-photo .images-container .next {
   cursor: pointer;
   position: absolute;
   width: 2.5rem;
@@ -319,25 +458,25 @@ body {
   opacity: 0.6;
   z-index: 3;
 }
-#projects-tab .project-detail .detail-photo .images-container .prev i, #projects-tab .project-detail .detail-photo .images-container .next i {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .prev i, .visible-body #projects-tab .project-detail .detail-photo .images-container .next i {
   border: none;
 }
-#projects-tab .project-detail .detail-photo .images-container .prev:hover, #projects-tab .project-detail .detail-photo .images-container .next:hover {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .prev:hover, .visible-body #projects-tab .project-detail .detail-photo .images-container .next:hover {
   opacity: 0.9;
 }
-#projects-tab .project-detail .detail-photo .images-container .prev {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .prev {
   left: 0.5rem;
   top: 50%;
 }
-#projects-tab .project-detail .detail-photo .images-container .next {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .next {
   right: 0.5rem;
   top: 50%;
 }
-#projects-tab .project-detail .detail-photo .images-container .image {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .image {
   box-shadow: 0px 0px 20px var(--body-clr);
   display: none;
 }
-#projects-tab .project-detail .detail-photo .images-container .image img {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .image img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
@@ -345,10 +484,10 @@ body {
   animation-name: fade;
   animation-duration: 1.5s;
 }
-#projects-tab .project-detail .detail-photo .images-container .visible-photo {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .visible-photo {
   display: block;
 }
-#projects-tab .project-detail .detail-photo .images-container .dots {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .dots {
   position: absolute;
   bottom: 7rem;
   width: 100%;
@@ -356,14 +495,14 @@ body {
   justify-content: center;
   gap: 1rem;
 }
-#projects-tab .project-detail .detail-photo .images-container .dots .dot {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .dots .dot {
   height: 0.9rem;
   width: 0.9rem;
   border-radius: 50%;
   background-color: #717171;
   transition: all 0.6s ease;
 }
-#projects-tab .project-detail .detail-photo .images-container .dots .active-dot {
+.visible-body #projects-tab .project-detail .detail-photo .images-container .dots .active-dot {
   background-color: #bbb;
   height: 1.1rem;
   width: 1.1rem;
@@ -376,7 +515,7 @@ body {
     opacity: 1;
   }
 }
-#projects-tab .project-detail .detail-siteplan {
+.visible-body #projects-tab .project-detail .detail-siteplan {
   padding: 1rem 1rem 1rem 5rem;
   width: 100%;
   height: 50vw;
@@ -385,23 +524,23 @@ body {
   justify-content: flex-start;
   align-items: center;
 }
-#projects-tab .project-detail .detail-siteplan h2 {
+.visible-body #projects-tab .project-detail .detail-siteplan h2 {
   align-self: flex-start;
   margin: 2rem 0rem;
   font-size: 1.8rem;
 }
-#projects-tab .project-detail .detail-siteplan .siteplan-image {
+.visible-body #projects-tab .project-detail .detail-siteplan .siteplan-image {
   margin: 1rem;
   box-shadow: 0 0 10px var(--nav-txt-clr);
   width: 90%;
   align-self: flex-start;
 }
-#projects-tab .project-detail .detail-siteplan .siteplan-image img {
+.visible-body #projects-tab .project-detail .detail-siteplan .siteplan-image img {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-#projects-tab .project-detail .detail-floorplan, #projects-tab .project-detail .detail-elevation, #projects-tab .project-detail .detail-section {
+.visible-body #projects-tab .project-detail .detail-floorplan, .visible-body #projects-tab .project-detail .detail-elevation, .visible-body #projects-tab .project-detail .detail-section {
   padding: 1rem 1rem 1rem 4rem;
   display: flex;
   flex-direction: column;
@@ -409,12 +548,12 @@ body {
   align-items: center;
   margin-bottom: 5rem;
 }
-#projects-tab .project-detail .detail-floorplan h2, #projects-tab .project-detail .detail-elevation h2, #projects-tab .project-detail .detail-section h2 {
+.visible-body #projects-tab .project-detail .detail-floorplan h2, .visible-body #projects-tab .project-detail .detail-elevation h2, .visible-body #projects-tab .project-detail .detail-section h2 {
   align-self: flex-start;
   margin: 2rem 0rem;
   font-size: 1.8rem;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan, #projects-tab .project-detail .detail-floorplan .elevation, #projects-tab .project-detail .detail-floorplan .section, #projects-tab .project-detail .detail-elevation .floorplan, #projects-tab .project-detail .detail-elevation .elevation, #projects-tab .project-detail .detail-elevation .section, #projects-tab .project-detail .detail-section .floorplan, #projects-tab .project-detail .detail-section .elevation, #projects-tab .project-detail .detail-section .section {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan, .visible-body #projects-tab .project-detail .detail-floorplan .elevation, .visible-body #projects-tab .project-detail .detail-floorplan .section, .visible-body #projects-tab .project-detail .detail-elevation .floorplan, .visible-body #projects-tab .project-detail .detail-elevation .elevation, .visible-body #projects-tab .project-detail .detail-elevation .section, .visible-body #projects-tab .project-detail .detail-section .floorplan, .visible-body #projects-tab .project-detail .detail-section .elevation, .visible-body #projects-tab .project-detail .detail-section .section {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -424,7 +563,7 @@ body {
   margin: 1rem;
   align-self: flex-start;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section, #projects-tab .project-detail .detail-floorplan .section .prev-next-floor, #projects-tab .project-detail .detail-floorplan .section .prev-next-elev, #projects-tab .project-detail .detail-floorplan .section .prev-next-section, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section, #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor, #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev, #projects-tab .project-detail .detail-elevation .elevation .prev-next-section, #projects-tab .project-detail .detail-elevation .section .prev-next-floor, #projects-tab .project-detail .detail-elevation .section .prev-next-elev, #projects-tab .project-detail .detail-elevation .section .prev-next-section, #projects-tab .project-detail .detail-section .floorplan .prev-next-floor, #projects-tab .project-detail .detail-section .floorplan .prev-next-elev, #projects-tab .project-detail .detail-section .floorplan .prev-next-section, #projects-tab .project-detail .detail-section .elevation .prev-next-floor, #projects-tab .project-detail .detail-section .elevation .prev-next-elev, #projects-tab .project-detail .detail-section .elevation .prev-next-section, #projects-tab .project-detail .detail-section .section .prev-next-floor, #projects-tab .project-detail .detail-section .section .prev-next-elev, #projects-tab .project-detail .detail-section .section .prev-next-section {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-section, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-section, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-floor, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-elev, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-section, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-floor, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-elev, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-section, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-floor, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-elev, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-section, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-floor, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-elev, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-section {
   cursor: pointer;
   position: absolute;
   width: 2.5rem;
@@ -439,34 +578,34 @@ body {
   opacity: 0.6;
   z-index: 3;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor i, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev i, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section i, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor i, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev i, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section i, #projects-tab .project-detail .detail-floorplan .section .prev-next-floor i, #projects-tab .project-detail .detail-floorplan .section .prev-next-elev i, #projects-tab .project-detail .detail-floorplan .section .prev-next-section i, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor i, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev i, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section i, #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor i, #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev i, #projects-tab .project-detail .detail-elevation .elevation .prev-next-section i, #projects-tab .project-detail .detail-elevation .section .prev-next-floor i, #projects-tab .project-detail .detail-elevation .section .prev-next-elev i, #projects-tab .project-detail .detail-elevation .section .prev-next-section i, #projects-tab .project-detail .detail-section .floorplan .prev-next-floor i, #projects-tab .project-detail .detail-section .floorplan .prev-next-elev i, #projects-tab .project-detail .detail-section .floorplan .prev-next-section i, #projects-tab .project-detail .detail-section .elevation .prev-next-floor i, #projects-tab .project-detail .detail-section .elevation .prev-next-elev i, #projects-tab .project-detail .detail-section .elevation .prev-next-section i, #projects-tab .project-detail .detail-section .section .prev-next-floor i, #projects-tab .project-detail .detail-section .section .prev-next-elev i, #projects-tab .project-detail .detail-section .section .prev-next-section i {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section i, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section i, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-section i, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section i, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-section i, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-section i, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-section i, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-section i, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-floor i, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-elev i, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-section i {
   border: none;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor:hover, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev:hover, #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section:hover, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor:hover, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev:hover, #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section:hover, #projects-tab .project-detail .detail-floorplan .section .prev-next-floor:hover, #projects-tab .project-detail .detail-floorplan .section .prev-next-elev:hover, #projects-tab .project-detail .detail-floorplan .section .prev-next-section:hover, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor:hover, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev:hover, #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section:hover, #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor:hover, #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev:hover, #projects-tab .project-detail .detail-elevation .elevation .prev-next-section:hover, #projects-tab .project-detail .detail-elevation .section .prev-next-floor:hover, #projects-tab .project-detail .detail-elevation .section .prev-next-elev:hover, #projects-tab .project-detail .detail-elevation .section .prev-next-section:hover, #projects-tab .project-detail .detail-section .floorplan .prev-next-floor:hover, #projects-tab .project-detail .detail-section .floorplan .prev-next-elev:hover, #projects-tab .project-detail .detail-section .floorplan .prev-next-section:hover, #projects-tab .project-detail .detail-section .elevation .prev-next-floor:hover, #projects-tab .project-detail .detail-section .elevation .prev-next-elev:hover, #projects-tab .project-detail .detail-section .elevation .prev-next-section:hover, #projects-tab .project-detail .detail-section .section .prev-next-floor:hover, #projects-tab .project-detail .detail-section .section .prev-next-elev:hover, #projects-tab .project-detail .detail-section .section .prev-next-section:hover {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-next-section:hover, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-floor:hover, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-elev:hover, .visible-body #projects-tab .project-detail .detail-section .section .prev-next-section:hover {
   opacity: 0.9;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .prev-floor, #projects-tab .project-detail .detail-floorplan .floorplan .prev-elev, #projects-tab .project-detail .detail-floorplan .floorplan .prev-section, #projects-tab .project-detail .detail-floorplan .elevation .prev-floor, #projects-tab .project-detail .detail-floorplan .elevation .prev-elev, #projects-tab .project-detail .detail-floorplan .elevation .prev-section, #projects-tab .project-detail .detail-floorplan .section .prev-floor, #projects-tab .project-detail .detail-floorplan .section .prev-elev, #projects-tab .project-detail .detail-floorplan .section .prev-section, #projects-tab .project-detail .detail-elevation .floorplan .prev-floor, #projects-tab .project-detail .detail-elevation .floorplan .prev-elev, #projects-tab .project-detail .detail-elevation .floorplan .prev-section, #projects-tab .project-detail .detail-elevation .elevation .prev-floor, #projects-tab .project-detail .detail-elevation .elevation .prev-elev, #projects-tab .project-detail .detail-elevation .elevation .prev-section, #projects-tab .project-detail .detail-elevation .section .prev-floor, #projects-tab .project-detail .detail-elevation .section .prev-elev, #projects-tab .project-detail .detail-elevation .section .prev-section, #projects-tab .project-detail .detail-section .floorplan .prev-floor, #projects-tab .project-detail .detail-section .floorplan .prev-elev, #projects-tab .project-detail .detail-section .floorplan .prev-section, #projects-tab .project-detail .detail-section .elevation .prev-floor, #projects-tab .project-detail .detail-section .elevation .prev-elev, #projects-tab .project-detail .detail-section .elevation .prev-section, #projects-tab .project-detail .detail-section .section .prev-floor, #projects-tab .project-detail .detail-section .section .prev-elev, #projects-tab .project-detail .detail-section .section .prev-section {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-floor, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-elev, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .prev-section, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-floor, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-elev, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .prev-section, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-floor, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-elev, .visible-body #projects-tab .project-detail .detail-floorplan .section .prev-section, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-floor, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-elev, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .prev-section, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-floor, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-elev, .visible-body #projects-tab .project-detail .detail-elevation .elevation .prev-section, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-floor, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-elev, .visible-body #projects-tab .project-detail .detail-elevation .section .prev-section, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-floor, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-elev, .visible-body #projects-tab .project-detail .detail-section .floorplan .prev-section, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-floor, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-elev, .visible-body #projects-tab .project-detail .detail-section .elevation .prev-section, .visible-body #projects-tab .project-detail .detail-section .section .prev-floor, .visible-body #projects-tab .project-detail .detail-section .section .prev-elev, .visible-body #projects-tab .project-detail .detail-section .section .prev-section {
   left: 0.5rem;
   top: 45%;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .next-floor, #projects-tab .project-detail .detail-floorplan .floorplan .next-elev, #projects-tab .project-detail .detail-floorplan .floorplan .next-section, #projects-tab .project-detail .detail-floorplan .elevation .next-floor, #projects-tab .project-detail .detail-floorplan .elevation .next-elev, #projects-tab .project-detail .detail-floorplan .elevation .next-section, #projects-tab .project-detail .detail-floorplan .section .next-floor, #projects-tab .project-detail .detail-floorplan .section .next-elev, #projects-tab .project-detail .detail-floorplan .section .next-section, #projects-tab .project-detail .detail-elevation .floorplan .next-floor, #projects-tab .project-detail .detail-elevation .floorplan .next-elev, #projects-tab .project-detail .detail-elevation .floorplan .next-section, #projects-tab .project-detail .detail-elevation .elevation .next-floor, #projects-tab .project-detail .detail-elevation .elevation .next-elev, #projects-tab .project-detail .detail-elevation .elevation .next-section, #projects-tab .project-detail .detail-elevation .section .next-floor, #projects-tab .project-detail .detail-elevation .section .next-elev, #projects-tab .project-detail .detail-elevation .section .next-section, #projects-tab .project-detail .detail-section .floorplan .next-floor, #projects-tab .project-detail .detail-section .floorplan .next-elev, #projects-tab .project-detail .detail-section .floorplan .next-section, #projects-tab .project-detail .detail-section .elevation .next-floor, #projects-tab .project-detail .detail-section .elevation .next-elev, #projects-tab .project-detail .detail-section .elevation .next-section, #projects-tab .project-detail .detail-section .section .next-floor, #projects-tab .project-detail .detail-section .section .next-elev, #projects-tab .project-detail .detail-section .section .next-section {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .next-section, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .next-section, .visible-body #projects-tab .project-detail .detail-floorplan .section .next-floor, .visible-body #projects-tab .project-detail .detail-floorplan .section .next-elev, .visible-body #projects-tab .project-detail .detail-floorplan .section .next-section, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .next-floor, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .next-elev, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .next-section, .visible-body #projects-tab .project-detail .detail-elevation .elevation .next-floor, .visible-body #projects-tab .project-detail .detail-elevation .elevation .next-elev, .visible-body #projects-tab .project-detail .detail-elevation .elevation .next-section, .visible-body #projects-tab .project-detail .detail-elevation .section .next-floor, .visible-body #projects-tab .project-detail .detail-elevation .section .next-elev, .visible-body #projects-tab .project-detail .detail-elevation .section .next-section, .visible-body #projects-tab .project-detail .detail-section .floorplan .next-floor, .visible-body #projects-tab .project-detail .detail-section .floorplan .next-elev, .visible-body #projects-tab .project-detail .detail-section .floorplan .next-section, .visible-body #projects-tab .project-detail .detail-section .elevation .next-floor, .visible-body #projects-tab .project-detail .detail-section .elevation .next-elev, .visible-body #projects-tab .project-detail .detail-section .elevation .next-section, .visible-body #projects-tab .project-detail .detail-section .section .next-floor, .visible-body #projects-tab .project-detail .detail-section .section .next-elev, .visible-body #projects-tab .project-detail .detail-section .section .next-section {
   right: 0.5rem;
   top: 45%;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .floor-plan-img, #projects-tab .project-detail .detail-floorplan .floorplan .elevation-img, #projects-tab .project-detail .detail-floorplan .floorplan .section-img, #projects-tab .project-detail .detail-floorplan .elevation .floor-plan-img, #projects-tab .project-detail .detail-floorplan .elevation .elevation-img, #projects-tab .project-detail .detail-floorplan .elevation .section-img, #projects-tab .project-detail .detail-floorplan .section .floor-plan-img, #projects-tab .project-detail .detail-floorplan .section .elevation-img, #projects-tab .project-detail .detail-floorplan .section .section-img, #projects-tab .project-detail .detail-elevation .floorplan .floor-plan-img, #projects-tab .project-detail .detail-elevation .floorplan .elevation-img, #projects-tab .project-detail .detail-elevation .floorplan .section-img, #projects-tab .project-detail .detail-elevation .elevation .floor-plan-img, #projects-tab .project-detail .detail-elevation .elevation .elevation-img, #projects-tab .project-detail .detail-elevation .elevation .section-img, #projects-tab .project-detail .detail-elevation .section .floor-plan-img, #projects-tab .project-detail .detail-elevation .section .elevation-img, #projects-tab .project-detail .detail-elevation .section .section-img, #projects-tab .project-detail .detail-section .floorplan .floor-plan-img, #projects-tab .project-detail .detail-section .floorplan .elevation-img, #projects-tab .project-detail .detail-section .floorplan .section-img, #projects-tab .project-detail .detail-section .elevation .floor-plan-img, #projects-tab .project-detail .detail-section .elevation .elevation-img, #projects-tab .project-detail .detail-section .elevation .section-img, #projects-tab .project-detail .detail-section .section .floor-plan-img, #projects-tab .project-detail .detail-section .section .elevation-img, #projects-tab .project-detail .detail-section .section .section-img {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-plan-img, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elevation-img, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-plan-img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elevation-img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-img, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-plan-img, .visible-body #projects-tab .project-detail .detail-floorplan .section .elevation-img, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-plan-img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elevation-img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-plan-img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elevation-img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-img, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-plan-img, .visible-body #projects-tab .project-detail .detail-elevation .section .elevation-img, .visible-body #projects-tab .project-detail .detail-elevation .section .section-img, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-plan-img, .visible-body #projects-tab .project-detail .detail-section .floorplan .elevation-img, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-img, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-plan-img, .visible-body #projects-tab .project-detail .detail-section .elevation .elevation-img, .visible-body #projects-tab .project-detail .detail-section .elevation .section-img, .visible-body #projects-tab .project-detail .detail-section .section .floor-plan-img, .visible-body #projects-tab .project-detail .detail-section .section .elevation-img, .visible-body #projects-tab .project-detail .detail-section .section .section-img {
   width: 100%;
   height: 90%;
   display: none;
   box-shadow: 0 0 5px var(--nav-txt-clr);
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .floor-plan-img img, #projects-tab .project-detail .detail-floorplan .floorplan .elevation-img img, #projects-tab .project-detail .detail-floorplan .floorplan .section-img img, #projects-tab .project-detail .detail-floorplan .elevation .floor-plan-img img, #projects-tab .project-detail .detail-floorplan .elevation .elevation-img img, #projects-tab .project-detail .detail-floorplan .elevation .section-img img, #projects-tab .project-detail .detail-floorplan .section .floor-plan-img img, #projects-tab .project-detail .detail-floorplan .section .elevation-img img, #projects-tab .project-detail .detail-floorplan .section .section-img img, #projects-tab .project-detail .detail-elevation .floorplan .floor-plan-img img, #projects-tab .project-detail .detail-elevation .floorplan .elevation-img img, #projects-tab .project-detail .detail-elevation .floorplan .section-img img, #projects-tab .project-detail .detail-elevation .elevation .floor-plan-img img, #projects-tab .project-detail .detail-elevation .elevation .elevation-img img, #projects-tab .project-detail .detail-elevation .elevation .section-img img, #projects-tab .project-detail .detail-elevation .section .floor-plan-img img, #projects-tab .project-detail .detail-elevation .section .elevation-img img, #projects-tab .project-detail .detail-elevation .section .section-img img, #projects-tab .project-detail .detail-section .floorplan .floor-plan-img img, #projects-tab .project-detail .detail-section .floorplan .elevation-img img, #projects-tab .project-detail .detail-section .floorplan .section-img img, #projects-tab .project-detail .detail-section .elevation .floor-plan-img img, #projects-tab .project-detail .detail-section .elevation .elevation-img img, #projects-tab .project-detail .detail-section .elevation .section-img img, #projects-tab .project-detail .detail-section .section .floor-plan-img img, #projects-tab .project-detail .detail-section .section .elevation-img img, #projects-tab .project-detail .detail-section .section .section-img img {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elevation-img img, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-img img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elevation-img img, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-img img, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-floorplan .section .elevation-img img, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-img img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elevation-img img, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-img img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elevation-img img, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-img img, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-elevation .section .elevation-img img, .visible-body #projects-tab .project-detail .detail-elevation .section .section-img img, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-section .floorplan .elevation-img img, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-img img, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-section .elevation .elevation-img img, .visible-body #projects-tab .project-detail .detail-section .elevation .section-img img, .visible-body #projects-tab .project-detail .detail-section .section .floor-plan-img img, .visible-body #projects-tab .project-detail .detail-section .section .elevation-img img, .visible-body #projects-tab .project-detail .detail-section .section .section-img img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
   align-self: flex-start;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan h3, #projects-tab .project-detail .detail-floorplan .elevation h3, #projects-tab .project-detail .detail-floorplan .section h3, #projects-tab .project-detail .detail-elevation .floorplan h3, #projects-tab .project-detail .detail-elevation .elevation h3, #projects-tab .project-detail .detail-elevation .section h3, #projects-tab .project-detail .detail-section .floorplan h3, #projects-tab .project-detail .detail-section .elevation h3, #projects-tab .project-detail .detail-section .section h3 {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan h3, .visible-body #projects-tab .project-detail .detail-floorplan .elevation h3, .visible-body #projects-tab .project-detail .detail-floorplan .section h3, .visible-body #projects-tab .project-detail .detail-elevation .floorplan h3, .visible-body #projects-tab .project-detail .detail-elevation .elevation h3, .visible-body #projects-tab .project-detail .detail-elevation .section h3, .visible-body #projects-tab .project-detail .detail-section .floorplan h3, .visible-body #projects-tab .project-detail .detail-section .elevation h3, .visible-body #projects-tab .project-detail .detail-section .section h3 {
   display: flex;
   width: 100%;
   justify-content: center;
@@ -475,11 +614,11 @@ body {
   text-align: center;
   font-weight: 900;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .visible-floor, #projects-tab .project-detail .detail-floorplan .floorplan .visible-elev, #projects-tab .project-detail .detail-floorplan .floorplan .visible-section, #projects-tab .project-detail .detail-floorplan .elevation .visible-floor, #projects-tab .project-detail .detail-floorplan .elevation .visible-elev, #projects-tab .project-detail .detail-floorplan .elevation .visible-section, #projects-tab .project-detail .detail-floorplan .section .visible-floor, #projects-tab .project-detail .detail-floorplan .section .visible-elev, #projects-tab .project-detail .detail-floorplan .section .visible-section, #projects-tab .project-detail .detail-elevation .floorplan .visible-floor, #projects-tab .project-detail .detail-elevation .floorplan .visible-elev, #projects-tab .project-detail .detail-elevation .floorplan .visible-section, #projects-tab .project-detail .detail-elevation .elevation .visible-floor, #projects-tab .project-detail .detail-elevation .elevation .visible-elev, #projects-tab .project-detail .detail-elevation .elevation .visible-section, #projects-tab .project-detail .detail-elevation .section .visible-floor, #projects-tab .project-detail .detail-elevation .section .visible-elev, #projects-tab .project-detail .detail-elevation .section .visible-section, #projects-tab .project-detail .detail-section .floorplan .visible-floor, #projects-tab .project-detail .detail-section .floorplan .visible-elev, #projects-tab .project-detail .detail-section .floorplan .visible-section, #projects-tab .project-detail .detail-section .elevation .visible-floor, #projects-tab .project-detail .detail-section .elevation .visible-elev, #projects-tab .project-detail .detail-section .elevation .visible-section, #projects-tab .project-detail .detail-section .section .visible-floor, #projects-tab .project-detail .detail-section .section .visible-elev, #projects-tab .project-detail .detail-section .section .visible-section {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .visible-floor, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .visible-elev, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .visible-section, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .visible-floor, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .visible-elev, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .visible-section, .visible-body #projects-tab .project-detail .detail-floorplan .section .visible-floor, .visible-body #projects-tab .project-detail .detail-floorplan .section .visible-elev, .visible-body #projects-tab .project-detail .detail-floorplan .section .visible-section, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .visible-floor, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .visible-elev, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .visible-section, .visible-body #projects-tab .project-detail .detail-elevation .elevation .visible-floor, .visible-body #projects-tab .project-detail .detail-elevation .elevation .visible-elev, .visible-body #projects-tab .project-detail .detail-elevation .elevation .visible-section, .visible-body #projects-tab .project-detail .detail-elevation .section .visible-floor, .visible-body #projects-tab .project-detail .detail-elevation .section .visible-elev, .visible-body #projects-tab .project-detail .detail-elevation .section .visible-section, .visible-body #projects-tab .project-detail .detail-section .floorplan .visible-floor, .visible-body #projects-tab .project-detail .detail-section .floorplan .visible-elev, .visible-body #projects-tab .project-detail .detail-section .floorplan .visible-section, .visible-body #projects-tab .project-detail .detail-section .elevation .visible-floor, .visible-body #projects-tab .project-detail .detail-section .elevation .visible-elev, .visible-body #projects-tab .project-detail .detail-section .elevation .visible-section, .visible-body #projects-tab .project-detail .detail-section .section .visible-floor, .visible-body #projects-tab .project-detail .detail-section .section .visible-elev, .visible-body #projects-tab .project-detail .detail-section .section .visible-section {
   display: flex;
   flex-direction: column;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .floor-dots, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots, #projects-tab .project-detail .detail-floorplan .elevation .section-dots, #projects-tab .project-detail .detail-floorplan .section .floor-dots, #projects-tab .project-detail .detail-floorplan .section .elev-dots, #projects-tab .project-detail .detail-floorplan .section .section-dots, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots, #projects-tab .project-detail .detail-elevation .floorplan .section-dots, #projects-tab .project-detail .detail-elevation .elevation .floor-dots, #projects-tab .project-detail .detail-elevation .elevation .elev-dots, #projects-tab .project-detail .detail-elevation .elevation .section-dots, #projects-tab .project-detail .detail-elevation .section .floor-dots, #projects-tab .project-detail .detail-elevation .section .elev-dots, #projects-tab .project-detail .detail-elevation .section .section-dots, #projects-tab .project-detail .detail-section .floorplan .floor-dots, #projects-tab .project-detail .detail-section .floorplan .elev-dots, #projects-tab .project-detail .detail-section .floorplan .section-dots, #projects-tab .project-detail .detail-section .elevation .floor-dots, #projects-tab .project-detail .detail-section .elevation .elev-dots, #projects-tab .project-detail .detail-section .elevation .section-dots, #projects-tab .project-detail .detail-section .section .floor-dots, #projects-tab .project-detail .detail-section .section .elev-dots, #projects-tab .project-detail .detail-section .section .section-dots {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots, .visible-body #projects-tab .project-detail .detail-section .section .section-dots {
   position: absolute;
   bottom: 7rem;
   width: 100%;
@@ -487,14 +626,14 @@ body {
   justify-content: center;
   gap: 1rem;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .section-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .section-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .section-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .section-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .section-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .section-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .section-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .section-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .floor-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .elev-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .section-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .section-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .section-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .section-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .floor-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .elev-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .section-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .floor-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .elev-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .section-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .floor-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .elev-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .section-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .floor-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .elev-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .section-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .floor-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .elev-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .section-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .floor-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .elev-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .section-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .floor-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .elev-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .section-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .floor-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .elev-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .section-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .floor-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .elev-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .section-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .floor-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .elev-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .section-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .floor-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .elev-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .section-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .floor-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .elev-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .section-dot, #projects-tab .project-detail .detail-section .section .floor-dots .floor-dot, #projects-tab .project-detail .detail-section .section .floor-dots .elev-dot, #projects-tab .project-detail .detail-section .section .floor-dots .section-dot, #projects-tab .project-detail .detail-section .section .elev-dots .floor-dot, #projects-tab .project-detail .detail-section .section .elev-dots .elev-dot, #projects-tab .project-detail .detail-section .section .elev-dots .section-dot, #projects-tab .project-detail .detail-section .section .section-dots .floor-dot, #projects-tab .project-detail .detail-section .section .section-dots .elev-dot, #projects-tab .project-detail .detail-section .section .section-dots .section-dot {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .section-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .section-dot {
   height: 0.9rem;
   width: 0.9rem;
   border-radius: 50%;
   background-color: #717171;
   transition: all 0.6s ease;
 }
-#projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-section-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .active-floor-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .active-elev-dot, #projects-tab .project-detail .detail-floorplan .section .section-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .section .floor-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .section .elev-dots .active-section-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .active-floor-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .active-elev-dot, #projects-tab .project-detail .detail-elevation .section .section-dots .active-section-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-section-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-section-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .active-floor-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .active-elev-dot, #projects-tab .project-detail .detail-section .floorplan .section-dots .active-section-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-section .elevation .floor-dots .active-section-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-section .elevation .elev-dots .active-section-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .active-floor-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .active-elev-dot, #projects-tab .project-detail .detail-section .elevation .section-dots .active-section-dot, #projects-tab .project-detail .detail-section .section .floor-dots .active-floor-dot, #projects-tab .project-detail .detail-section .section .floor-dots .active-elev-dot, #projects-tab .project-detail .detail-section .section .floor-dots .active-section-dot, #projects-tab .project-detail .detail-section .section .elev-dots .active-floor-dot, #projects-tab .project-detail .detail-section .section .elev-dots .active-elev-dot, #projects-tab .project-detail .detail-section .section .elev-dots .active-section-dot, #projects-tab .project-detail .detail-section .section .section-dots .active-floor-dot, #projects-tab .project-detail .detail-section .section .section-dots .active-elev-dot, #projects-tab .project-detail .detail-section .section .section-dots .active-section-dot {
+.visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .floorplan .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .elevation .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-floorplan .section .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .floorplan .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .elevation .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-elevation .section .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .floorplan .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .elevation .section-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .floor-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .elev-dots .active-section-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .active-floor-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .active-elev-dot, .visible-body #projects-tab .project-detail .detail-section .section .section-dots .active-section-dot {
   background-color: #bbb;
   height: 1.1rem;
   width: 1.1rem;
@@ -507,7 +646,7 @@ body {
     opacity: 1;
   }
 }
-#projects-tab .project-detail .detail-floorplan .download-btn, #projects-tab .project-detail .detail-elevation .download-btn, #projects-tab .project-detail .detail-section .download-btn {
+.visible-body #projects-tab .project-detail .detail-floorplan .download-btn, .visible-body #projects-tab .project-detail .detail-elevation .download-btn, .visible-body #projects-tab .project-detail .detail-section .download-btn {
   font-size: 1.1rem;
   padding: 0.4rem;
   border-radius: 0.4rem;
@@ -516,18 +655,18 @@ body {
   border-color: var(--border-1);
   border: none;
 }
-#projects-tab .project-detail .detail-floorplan .download-btn:hover, #projects-tab .project-detail .detail-elevation .download-btn:hover, #projects-tab .project-detail .detail-section .download-btn:hover {
+.visible-body #projects-tab .project-detail .detail-floorplan .download-btn:hover, .visible-body #projects-tab .project-detail .detail-elevation .download-btn:hover, .visible-body #projects-tab .project-detail .detail-section .download-btn:hover {
   box-shadow: var(--box-shadow-2);
   cursor: pointer;
 }
-#projects-tab .project-detail .detail-floorplan .download-btn:hover i, #projects-tab .project-detail .detail-elevation .download-btn:hover i, #projects-tab .project-detail .detail-section .download-btn:hover i {
+.visible-body #projects-tab .project-detail .detail-floorplan .download-btn:hover i, .visible-body #projects-tab .project-detail .detail-elevation .download-btn:hover i, .visible-body #projects-tab .project-detail .detail-section .download-btn:hover i {
   margin-left: 0.2rem;
 }
-#projects-tab .visible-detail {
+.visible-body #projects-tab .visible-detail {
   display: grid;
   transform: translateX(0%);
 }
-#projects-tab .back-btn {
+.visible-body #projects-tab .back-btn {
   transform: scale(0);
   position: fixed;
   left: 1.5rem;
@@ -538,24 +677,499 @@ body {
   border-radius: 50%;
   border-color: var(--bgr-clr-2);
   color: var(--body-clr);
-  z-index: 4;
+  z-index: 8;
   transition: transform 0.5s ease-in;
 }
-#projects-tab .back-btn:hover {
+.visible-body #projects-tab .back-btn:hover {
   background-color: var(--nav-bgr);
   box-shadow: var(--box-shadow-2);
   cursor: pointer;
 }
-#projects-tab .visible-back-btn {
+.visible-body #projects-tab .visible-back-btn {
   transform: scale(1);
 }
-
-.active-menu {
-  background-color: var(--main-bgr);
+.visible-body #about-tab {
+  width: 100%;
+  min-height: 100%;
 }
-
-@media screen and (max-width: 900px) {
-  #projects-tab .projects {
-    grid-template-columns: 1fr;
-  }
+.visible-body #about-tab::before {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 0.3rem;
+  margin: auto;
+  background-color: var(--nav-bgr);
+}
+.visible-body #about-tab .divisions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100%;
+  margin-top: 5.5rem;
+}
+.visible-body #about-tab .divisions .image-and-bgr {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 1rem;
+}
+.visible-body #about-tab .divisions .image-and-bgr .main-img {
+  width: 100%;
+  height: 82%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  transition: all 0.5s ease-in-out;
+}
+.visible-body #about-tab .divisions .image-and-bgr .main-img:hover {
+  margin-left: 1rem;
+}
+.visible-body #about-tab .divisions .image-and-bgr .main-img:hover + .bgr {
+  left: 6rem;
+}
+.visible-body #about-tab .divisions .image-and-bgr .bgr {
+  position: absolute;
+  left: 8rem;
+  width: 70%;
+  height: 80%;
+  top: 2%;
+  z-index: -1;
+  transition: all 0.5s ease-in-out;
+}
+.visible-body #about-tab .divisions .about-txt {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 1.5rem;
+  margin-left: 7rem;
+  margin-right: 3rem;
+  padding-top: 9rem;
+}
+.visible-body #about-tab .divisions .about-txt .hi {
+  font-family: "Rouge Script", cursive;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 8rem;
+}
+.visible-body #about-tab .divisions .about-txt .explanation {
+  font-size: 1.7rem;
+  margin-left: 1.5rem;
+  font-family: "Delius", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
+.visible-body #about-tab .divisions .about-txt .quote-box {
+  font-size: 1.4rem;
+  margin: 2.4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  font-family: "Delius", cursive;
+  font-weight: 600;
+  font-style: normal;
+}
+.visible-body #about-tab .divisions .about-txt .quote-box .quote {
+  margin-left: 1.2rem;
+}
+.visible-body #about-tab .divisions .about-txt .quote-box .author {
+  align-self: flex-end;
+  padding-right: 2rem;
+}
+.visible-body #about-tab .profiles-container::before {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 0.3rem;
+  margin: auto;
+  background-color: var(--nav-bgr);
+}
+.visible-body #about-tab .profiles-container .profiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4rem 9rem;
+  -moz-column-gap: 6rem;
+       column-gap: 6rem;
+  margin-bottom: 7rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile {
+  margin-top: 3rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .title {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  font-size: 1.7rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .title .icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .title .line, .visible-body #about-tab .profiles-container .profiles .profile .title .line2 {
+  display: inline-block;
+  height: 0.2rem;
+  width: 4rem;
+  background-color: grey;
+  align-self: center;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .title .line2 {
+  width: 100%;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-left: 3.5rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description .sb-ttl-yr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description .sb-ttl-yr .sub-title {
+  font-size: 1.4rem;
+  font-weight: 550;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description .sb-ttl-yr .year {
+  font-size: 1.3rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description .sb-ttl-yr li::marker {
+  font-size: 1.5rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description h3 {
+  margin-left: 0.4rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .profile-description .project-yr {
+  margin: 1rem 0;
+  align-items: center;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .experience {
+  margin-bottom: 1.2rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .lists {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-left: 3.5rem;
+  margin-top: -0.5rem;
+  font-size: 1.3rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos {
+  max-width: 90%;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-left: 3rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid grey;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo img {
+  border: solid 1px burlywood;
+  width: 80%;
+  height: 80%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo .lumion-img {
+  width: 145%;
+  height: 145%;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo .revit-img {
+  width: 65%;
+  height: 65%;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo h5 {
+  color: rgba(0, 0, 0, 0.731);
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .ms-office {
+  width: 7.5rem;
+  justify-content: center;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .photoshop, .visible-body #about-tab .profiles-container .profiles .profile .logos .illustrator {
+  justify-content: center;
+  margin: 0 0.2rem;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .lumion {
+  justify-content: center;
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .sketchup {
+  width: 9rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+.visible-body #contact-tab {
+  min-height: 100vh;
+}
+.visible-body #contact-tab::before {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 0.3rem;
+  margin: auto;
+  background-color: var(--nav-bgr);
+}
+.visible-body #contact-tab .contact-container {
+  margin: 8rem 12rem 0 12rem !important;
+  min-height: 90%;
+}
+.visible-body #contact-tab .contact-container .main-title {
+  font-size: 3rem;
+  text-align: center;
+}
+.visible-body #contact-tab .contact-container .contact-content-con {
+  display: flex;
+  flex-direction: row;
+  padding-top: 3.5rem;
+  gap: 1rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact {
+  width: 50%;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-msg {
+  font-size: 1.3rem;
+  margin: 1rem 0;
+  line-height: 2rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.15rem;
+  margin: 0.2rem 0;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item p {
+  margin: 0.3rem 2.2rem 0.3rem 0 !important;
+  padding: 0 !important;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .icon {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  white-space: nowrap;
+  margin-right: 0.3rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .icon i {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .email {
+  max-width: 60%;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .email a {
+  color: inherit;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .tel {
+  color: inherit;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact h4 {
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container {
+  margin-top: 4rem;
+  width: 4rem;
+  height: 4rem;
+  /* height: 4rem;  */
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.5s ease-in-out;
+  text-decoration: none;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon {
+  /* border: 1px solid red; */
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  /* gap: 1rem; */
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon span:nth-child(2) {
+  top: 6px;
+  right: 6px;
+  opacity: 0.6;
+  display: none;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon span:nth-child(3) {
+  top: 12px;
+  right: 12px;
+  opacity: 0.4;
+  display: none;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon span:nth-child(4) {
+  top: 18px;
+  right: 18px;
+  opacity: 0.2;
+  display: none;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon .main-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon .main-icon i {
+  opacity: 0.8;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .telegram span {
+  color: #0088cc;
+  border: solid 2px #0088cc;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .telegram .main-icon {
+  color: #0088cc;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .telegram + .text {
+  color: #0088cc;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .whatsapp span {
+  color: #25D366;
+  border: solid 2px #25D366;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .whatsapp .main-icon {
+  color: #25D366;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .whatsapp + .text {
+  color: #25D366;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .instagram span {
+  color: #E1306C;
+  border: solid 2px #E1306C;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .instagram .main-icon {
+  color: #E1306C;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .instagram + .text {
+  color: #E1306C;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .facebook span {
+  color: #1877F2;
+  border: solid 2px #1877F2;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .facebook .main-icon {
+  color: #1877F2;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .facebook + .text {
+  color: #1877F2;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container:hover {
+  margin-top: 1.5rem;
+  width: 8rem;
+  height: 6rem;
+  /* transform: rotate(-45deg); */
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container:hover .icon {
+  transform: rotate(-45deg) skew(15deg, 25deg);
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container:hover .icon span {
+  display: flex;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container:hover .text {
+  display: block;
+  opacity: 0.7;
+  transform: scale(1);
+  font-size: 1.3rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .text {
+  /* display: none; */
+  font-size: 0;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact {
+  flex: 3;
+  margin-left: 3rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact h1 {
+  font-weight: 400;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .input-control {
+  margin: 1.5rem 0;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .input-control input, .visible-body #contact-tab .contact-container .contact-content-con .right-contact .input-control textarea {
+  border-radius: 3px;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0.8rem 1.1rem;
+  outline: none;
+  border: none;
+  background-color: var(--nav-bgr);
+  width: 100%;
+  color: var(--nav-txt-clr);
+  resize: none;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .ic2 {
+  display: flex;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .ic2 :last-child {
+  margin-left: 1.5rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn {
+  display: flex;
+  justify-content: flex-start;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn {
+  margin-left: 0;
+  font-size: 1.3rem;
+  padding: 0.3rem 0.9rem;
+  color: var(--body-clr);
+  background-color: var(--nav-bgr);
+  border: var(--border-1);
+  box-shadow: var(--box-shadow-2);
+  border-radius: 0.3rem;
+  transition: all 0.2s ease-in-out;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn:hover {
+  gap: 1rem;
+  box-shadow: var(--box-shadow-2) inset;
+  border-color: #25D366;
+  margin-left: 0.2rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn:hover .btn-icon {
+  display: inline-block;
+  transform: skew(10deg, 20deg);
+  margin-left: 1rem;
+}
+.visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn .btn-icon {
+  transition: all 0.4s ease-in-out;
+  margin-left: 0.5rem;
+  color: #25D366;
+}
+.visible-body .active-menu {
+  background-color: var(--main-bgr);
 }/*# sourceMappingURL=styles.css.map */
