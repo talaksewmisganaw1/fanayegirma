@@ -15,7 +15,6 @@
   --box-shadow-1: 0 0 30px rgba(0, 0, 0, 0.06);
   --box-shadow-2: 0 0 10px #add994;
   --border-1: 1px solid #b2ef8f;
-  font-size: 0.96vw;
 }
 
 html, body {
@@ -1172,4 +1171,91 @@ body {
 }
 .visible-body .active-menu {
   background-color: var(--main-bgr);
+}
+
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 1vw;
+  }
+}
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 1.8vw;
+  }
+  .visible-body #projects-tab .projects {
+    grid-template-columns: 1fr;
+  }
+  .visible-body #about-tab .divisions {
+    border: solid 1px red;
+    grid-template-columns: 2fr;
+    position: relative;
+  }
+  .visible-body #about-tab .divisions * {
+    border: grey solid 1px;
+  }
+  .visible-body #about-tab .divisions .image-and-bgr {
+    border: solid green 1px;
+    width: 90%;
+    height: 75%;
+    grid-row: 1/2;
+    margin-top: 5rem;
+    justify-self: center;
+  }
+  .visible-body #about-tab .divisions .image-and-bgr .main-img {
+    height: 100%;
+  }
+  .visible-body #about-tab .divisions .image-and-bgr .bgr {
+    height: 100%;
+  }
+  .visible-body #about-tab .divisions .about-txt {
+    border: solid blue 1px;
+    padding-top: 0;
+    margin: -6rem 4rem 0 4rem;
+  }
+  .visible-body #about-tab .divisions .about-txt .hi {
+    position: absolute;
+    top: 2.5rem;
+    left: 1.5rem;
+  }
+  .visible-body #about-tab .divisions .about-txt .explanation {
+    font-size: 2rem;
+  }
+  .visible-body #about-tab .divisions .about-txt .quote-box {
+    font-size: 1.8rem;
+  }
+  .visible-body #about-tab .profiles-container .profiles {
+    grid-template-columns: 2fr;
+  }
+  .visible-body #contact-tab .contact-container {
+    margin: 8rem 5rem !important;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con {
+    flex-direction: column;
+    gap: 6rem;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con * {
+    border: solid 1px grey;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact {
+    border: 1px solid black;
+    width: 100%;
+    margin: auto;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-msg {
+    font-size: 1.6rem;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item {
+    font-size: 1.4rem;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item .icon {
+    padding: 0 !important;
+    grid-template-columns: 10px 1fr;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-info .contact-item p {
+    margin: 0.3rem !important;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .right-contact {
+    margin: auto;
+    width: 100%;
+  }
 }/*# sourceMappingURL=styles.css.map */

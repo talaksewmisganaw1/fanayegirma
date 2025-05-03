@@ -1,471 +1,576 @@
-@media screen and (max-width: 1560px) {
-    .visible-body {
-        #about-tab {
-            .divisions {
-                .about-txt {
-                    // border: red 1px solid;
-                    margin-left: 9rem;
-                    padding-top: 7.5rem;
-                    .hi {
-                        font-size: 6.9rem;
-                    }
-                    .explanation {
-                        font-size: 1.5rem;
-                    }
-                    .quote-box {
-                        margin: 1.3rem 4rem;
-                        font-size: 1.25rem;
-                    }
-                }
-            }
-        }
+// @media screen and (max-width: 1560px) {
+//     .visible-body {
+//         #about-tab {
+//             .divisions {
+//                 .about-txt {
+//                     // border: red 1px solid;
+//                     margin-left: 9rem;
+//                     padding-top: 7.5rem;
+//                     .hi {
+//                         font-size: 6.9rem;
+//                     }
+//                     .explanation {
+//                         font-size: 1.5rem;
+//                     }
+//                     .quote-box {
+//                         margin: 1.3rem 4rem;
+//                         font-size: 1.25rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+// @media screen and (max-width: 1425px) {
+//     // * {
+//     //     border: solid .5px green;
+//     // }
+//     .visible-body {
+//         #projects-tab {
+//             .nav {
+//                 height: 6vw;
+//             }
+//             .projects {
+//                 padding: 10rem 6rem;
+//             }
+//         }
+
+//         #about-tab {
+//             .divisions {
+//                 margin-top: 6.2vw;
+//                 .image-and-bgr {
+//                     // * {
+//                     //     border: solid 1px orange;
+//                     // }
+//                     .main-img {
+//                         &:hover {
+//                             + .bgr {
+//                                 left: 5.8rem;
+//                             }
+//                         }
+//                     }
+//                     .bgr {
+//                         left: 6.6rem;
+//                     }
+//                 }
+//                 .about-txt {
+//                     // border: red 1px solid;
+//                     margin-left: 7.5rem;
+//                     margin-right: 1rem;
+//                     padding-top: 7.5rem;
+//                 }
+//             }
+//             .profiles-container {
+//                 border: solid 1px silver;
+//                 * {
+//                     border: solid 1px gold;
+//                 }
+//                 .profiles {
+//                     // padding: 4rem 9rem;
+//                     padding: 5vw 10vw;
+//                     margin-bottom: 8rem;
+//                     column-gap: 9vw;
+//                     .profile {
+//                         // margin-top: 13rem;
+//                         margin-top: 3.7vw;
+//                         .title {
+//                             // font-size: 1.5rem;
+//                             font-size: 1.8vw;
+    
+//                         }
+//                         .profile-description {
+//                             gap: 1vw;
+//                             margin-left: 4.2vw;
+//                             // margin-left: 3.5rem;
+//                             .sb-ttl-yr {
+//                                 gap: 2.1vw;
+//                                 .sub-title {
+//                                     // font-size: 1.25rem;
+//                                     font-size: 1.5vw;
+//                                     font-weight: 550;
+//                                 }
+//                                 .year {
+//                                     // font-size: 1.15rem;
+//                                     font-size: 1.3vw;
+//                                 }
+//                                 li::marker {
+//                                     // font-size: 1.5rem;
+//                                     font-size: 1.8vw;
+//                                 }
+//                             }
+//                             h3 {
+//                                 // font-size: 1.1rem;
+//                                 font-size: 1.25vw;
+//                             }
+//                             .project-yr {
+//                                 margin: 1vw 0;
+//                             }
+//                         }
+//                         .lists {
+//                             // font-size: 1.22rem;
+//                             font-size: 1.45vw;
+//                             margin-left: 3.5rem;
+//                             margin-left: 4.3vw;
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         #contact-tab {
+//             .contact-container {
+//                 // border: red 1px solid;
+//                 margin: 8rem 10.5rem 0 10.5rem !important;
+//                 .main-title {
+//                     font-size: 2.3rem;
+//                 }
+//                 .contact-content-con {
+//                     .left-contact {
+//                         // border: solid 1px pink;
+//                         h4 {
+//                             font-size: 2rem;
+//                         }
+//                         .contact-msg {
+//                             font-size: 1.25rem;
+//                         }
+//                         .contact-info {
+//                             .contact-item {
+//                                 font-size: 1.15rem;
+//                                 .icon {
+//                                     i {
+//                                         font-size: 1.3rem;
+//                                     }
+//                                 }
+//                             }
+//                         }
+//                         .contact-btns {
+//                             gap: .1rem;
+//                             // justify-content: center;
+//                             .icon-container {
+//                                 // background-color: antiquewhite;
+//                                 margin-top: 3.5rem;
+//                                 width: 3.5rem;
+//                                 height: 3.5rem;
+//                                 .icon {
+//                                     width: 2.5rem;
+//                                     height: 2.5rem;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                     .right-contact {
+//                         h1 {
+//                             font-size: 1.4rem;
+//                         }
+//                         .submit-btn {
+//                             .main-btn {
+//                                 font-size: 1.2rem;
+//                                 margin-left: .13rem;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 1325px) {
+//     .visible-body {
+//         #about-tab {
+//             .divisions {
+//                 .about-txt {
+//                     // border: red 1px solid;
+//                     margin-left: 6.5rem;
+//                     margin-right: .5rem;
+//                     padding-top: 6rem;
+//                     .hi {
+//                         font-size: 6rem;
+//                     }
+//                     .explanation {
+//                         font-size: 1.35rem;
+//                     }
+//                     .quote-box {
+//                         margin: 0rem 4rem 0rem 5rem;
+//                         font-size: 1.1rem;
+//                         font-weight: 600;
+//                         gap: .5rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 1285px) {
+//     // * {
+//     //     border: 1px solid red;
+//     // }
+//     .visible-body {
+//         #projects-tab {
+//             .projects {
+//                 padding: 10rem 4rem;
+//                 gap: auto;
+//             }
+//         }
+//         #contact-tab {
+//             .contact-container {
+//                 // border: solid 1px bisque;
+//                 margin: 7.5rem 8.5rem 0 8.5rem !important;
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 1150px) {
+//     // * {
+//     //     border: 1px solid red;
+//     // }
+//     .visible-body {
+//         #projects-tab {
+//             .projects {
+//                 padding: 10rem 3rem;
+//                 gap: auto;
+//             }
+//         }
+
+//         #about-tab {
+//             .divisions {
+//                 .image-and-bgr {
+//                     // * {
+//                     //     border: solid 1px orange;
+//                     // }
+//                     .main-img {
+//                         &:hover {
+//                             + .bgr {
+//                                 left: 4rem;
+//                             }
+//                         }
+//                     }
+//                     .bgr {
+//                         left: 5rem;
+//                     }
+//                 }
+//                 .about-txt {
+//                     // border: red 1px solid;
+//                     margin-left: 5rem;
+//                     // margin-right: .5rem;
+//                     padding-top: 5rem;
+//                     .hi {
+//                         font-size: 5rem;
+//                     }
+//                     .explanation {
+//                         font-size: 1.23rem;
+//                     }
+//                     .quote-box {
+//                         margin: 0rem 2.5rem 0rem 4rem;
+//                         font-size: 1.05rem;
+//                     //     font-weight: 600;
+//                     //     gap: .5rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 1041px) {
+//     // * {
+//     //     border: 1px solid red;
+//     // }
+//     // .visible-body {
+//     //     #projects-tab {
+//     //         .projects {
+//     //             padding: 10rem 3rem;
+//     //             gap: auto;
+//     //         }
+//     //     }
+//     .visible-body {
+//         #about-tab {
+//             .divisions {
+//                 .about-txt {
+//                     // border: red 1px solid;
+//     //                 margin-left: 5rem;
+//     //                 // margin-right: .5rem;
+//     //                 padding-top: 5rem;
+//                     gap: .9rem;
+//     //                 .hi {
+//     //                     font-size: 5rem;
+//     //                 }
+//     //                 .explanation {
+//     //                     font-size: 1.23rem;
+//     //                 }
+//     //                 .quote-box {
+//     //                     margin: 0rem 2.5rem 0rem 4rem;
+//     //                     font-size: 1.05rem;
+//     //                 //     font-weight: 600;
+//     //                 //     gap: .5rem;
+//     //                 }
+//     //             }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 1000px) {
+//     // * {
+//     //     border: 1px solid red;
+//     // }
+//     .visible-body {
+//         #projects-tab {
+//             .projects {
+//                 grid-template-columns: 1fr;
+
+//                 padding: 10rem 9rem;
+//                 // gap: auto;
+//             }
+//         }
+//         // #contact-tab {
+//         //     .contact-info {
+//         //         p {
+//         //             border: solid 1px red;
+//         //             margin: 5rem;
+//         //         }
+//         //     }
+//         // }
+        
+//         #about-tab {
+//             .divisions {
+//                 .image-and-bgr {
+//                     // * {
+//                     //     border: solid 1px orange;
+//                     // }
+//                     .main-img {
+//                         &:hover {
+//                             + .bgr {
+//                                 left: 3.5rem;
+//                             }
+//                         }
+//                     }
+//                     .bgr {
+//                         left: 4rem;
+//                         width: 73%;
+//                     }
+//                 }
+//                 .about-txt {
+//                     // border: red 1px solid;
+//                     margin-left: 4.5rem;
+//                     // margin-right: .5rem;
+//                     padding-top: 4.5rem;
+//                     gap: .8rem;
+//                     .hi {
+//                         font-size: 4.5rem;
+//                     }
+//                     .explanation {
+//                         font-size: 1.2rem;
+//                     }
+//                     .quote-box {
+//                         margin: 0rem 2.5rem 0rem 4rem;
+//                         font-size: 1.0rem;
+//                     //     font-weight: 600;
+//                     //     gap: .5rem;
+//                     }
+//                 }
+//             }
+//             // .profiles-container {
+//             //     border: solid 1px silver;
+//             //     * {
+//             //         border: solid 1px gold;
+//             //     }
+//             //     // .profiles {
+
+//             //     // }
+//             // }
+//         }
+
+//         #contact-tab {
+//             .contact-container {
+//                 margin: 7.5rem 6.5rem 0 6.5rem !important;
+//                 .main-title {
+//                     font-size: 2.1rem;
+//                 }
+//                 .contact-content-con {
+//                     .left-contact {
+//                         .contact-info {
+//                             .contact-item {
+//                                 // border: solid 1px grey;
+//                                 p {
+//                                     // border: solid 1px red;
+//                                     padding-left: .5rem !important;
+//                                     margin-right: 0 !important;
+//                                     text-align: center;
+//                                 }
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @media screen and (max-width: 900px) {
+//     .visible-body {
+//         #projects-tab {
+//             .projects {
+//                 grid-template-columns: 1fr;
+//             }
+//         }
+
+//         #about-tab {
+//             .divisions {
+//                 border: solid 1px silver;
+//                 * {
+//                     border: solid 1px gold;
+//                 }
+//                 .image-and-bgr {
+//                     // * {
+//                     //     border: solid 1px orange;
+//                     // }
+//                     .main-img {
+//                         &:hover {
+//                             + .bgr {
+//                                 // left: 3.5rem;
+//                                 // left: 5vw;
+//                                 left: 6.5vw;
+//                             }
+//                         }
+//                     }
+//                     .bgr {
+//                         // left: 4rem;
+//                         left: 7vw;
+//                         width: 73%;
+//                     }
+//                 }
+//                 .about-txt {
+//                 //     // border: red 1px solid;
+//                     // margin-left: 4rem;
+//                     margin-left: 7.4vw;
+//                 //     // margin-right: .5rem;
+//                     // padding-top: 4rem;
+//                     padding-top: 7.4vw;
+//                     // gap: .8rem;
+//                     .hi {
+//                         // font-size: 4rem;
+//                         font-size: 9vw;
+//                     }
+//                     .explanation {
+//                         font-size: 1.1rem;
+//                         font-size: 2vw;
+//                     }
+//                     .quote-box {
+//                 //         margin: 0rem 2.5rem 0rem 4rem;
+//                         // font-size: .9rem;
+//                         font-size: 1.6vw;
+//                 //     //     font-weight: 600;
+//                 //     //     gap: .5rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 1vw;
     }
 }
 
 
-@media screen and (max-width: 1425px) {
-    // * {
-    //     border: solid .5px green;
-    // }
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 1.8vw;
+    }
     .visible-body {
         #projects-tab {
-            .nav {
-                height: 6vw;
-            }
             .projects {
-                padding: 10rem 6rem;
+                grid-template-columns: 1fr;
             }
         }
-
         #about-tab {
             .divisions {
-                margin-top: 6.2vw;
+                border: solid 1px red;
+                * {
+                    border: grey solid 1px;
+                }
+                grid-template-columns: 2fr;
+                position: relative;
                 .image-and-bgr {
-                    // * {
-                    //     border: solid 1px orange;
-                    // }
+                    border: solid green 1px;
+                    // margin: 4rem;
+                    width: 90%;
+                    height: 75%;
+                    grid-row: 1/2;
+                    margin-top: 5rem;
+                    justify-self: center;
+
                     .main-img {
-                        &:hover {
-                            + .bgr {
-                                left: 5.8rem;
-                            }
-                        }
+                        height: 100%;
                     }
                     .bgr {
-                        left: 6.6rem;
+                        height: 100%;
                     }
                 }
                 .about-txt {
-                    // border: red 1px solid;
-                    margin-left: 7.5rem;
-                    margin-right: 1rem;
-                    padding-top: 7.5rem;
+                    border: solid blue 1px;
+                    padding-top: 0;
+                    // margin: 2rem 4rem;
+                    margin: -6rem 4rem 0 4rem;
+                    .hi {
+                        position: absolute;
+                        top: 2.5rem;
+                        left: 1.5rem;
+                    }
+
+                    .explanation {
+                        font-size: 2rem;
+                    }
+                    .quote-box {
+                        font-size: 1.8rem;
+                    }
                 }
             }
             .profiles-container {
-                border: solid 1px silver;
-                * {
-                    border: solid 1px gold;
-                }
                 .profiles {
-                    // padding: 4rem 9rem;
-                    padding: 5vw 10vw;
-                    margin-bottom: 8rem;
-                    column-gap: 9vw;
-                    .profile {
-                        // margin-top: 13rem;
-                        margin-top: 3.7vw;
-                        .title {
-                            // font-size: 1.5rem;
-                            font-size: 1.8vw;
-    
-                        }
-                        .profile-description {
-                            gap: 1vw;
-                            margin-left: 4.2vw;
-                            // margin-left: 3.5rem;
-                            .sb-ttl-yr {
-                                gap: 2.1vw;
-                                .sub-title {
-                                    // font-size: 1.25rem;
-                                    font-size: 1.5vw;
-                                    font-weight: 550;
-                                }
-                                .year {
-                                    // font-size: 1.15rem;
-                                    font-size: 1.3vw;
-                                }
-                                li::marker {
-                                    // font-size: 1.5rem;
-                                    font-size: 1.8vw;
-                                }
-                            }
-                            h3 {
-                                // font-size: 1.1rem;
-                                font-size: 1.25vw;
-                            }
-                            .project-yr {
-                                margin: 1vw 0;
-                            }
-                        }
-                        .lists {
-                            // font-size: 1.22rem;
-                            font-size: 1.45vw;
-                            margin-left: 3.5rem;
-                            margin-left: 4.3vw;
-                        }
-                    }
+                    grid-template-columns: 2fr;
                 }
             }
         }
         #contact-tab {
             .contact-container {
-                // border: red 1px solid;
-                margin: 8rem 10.5rem 0 10.5rem !important;
-                .main-title {
-                    font-size: 2.3rem;
-                }
+                margin: 8rem 5rem !important;
                 .contact-content-con {
+                    flex-direction: column;
+                    gap: 6rem;
+                    * {
+                        border: solid 1px grey;
+                    }
                     .left-contact {
-                        // border: solid 1px pink;
-                        h4 {
-                            font-size: 2rem;
-                        }
+                        border: 1px solid black;
+                        width: 100%;
+                        margin: auto;
                         .contact-msg {
-                            font-size: 1.25rem;
+                            font-size: 1.6rem;
                         }
                         .contact-info {
                             .contact-item {
-                                font-size: 1.15rem;
+                                font-size: 1.4rem;
                                 .icon {
-                                    i {
-                                        font-size: 1.3rem;
-                                    }
+                                    padding: 0 !important;
+                                    grid-template-columns: 10px 1fr;
                                 }
-                            }
-                        }
-                        .contact-btns {
-                            gap: .1rem;
-                            // justify-content: center;
-                            .icon-container {
-                                // background-color: antiquewhite;
-                                margin-top: 3.5rem;
-                                width: 3.5rem;
-                                height: 3.5rem;
-                                .icon {
-                                    width: 2.5rem;
-                                    height: 2.5rem;
+                                p {
+                                    margin: .3rem !important;
                                 }
                             }
                         }
                     }
                     .right-contact {
-                        h1 {
-                            font-size: 1.4rem;
-                        }
-                        .submit-btn {
-                            .main-btn {
-                                font-size: 1.2rem;
-                                margin-left: .13rem;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1325px) {
-    .visible-body {
-        #about-tab {
-            .divisions {
-                .about-txt {
-                    // border: red 1px solid;
-                    margin-left: 6.5rem;
-                    margin-right: .5rem;
-                    padding-top: 6rem;
-                    .hi {
-                        font-size: 6rem;
-                    }
-                    .explanation {
-                        font-size: 1.35rem;
-                    }
-                    .quote-box {
-                        margin: 0rem 4rem 0rem 5rem;
-                        font-size: 1.1rem;
-                        font-weight: 600;
-                        gap: .5rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1285px) {
-    // * {
-    //     border: 1px solid red;
-    // }
-    .visible-body {
-        #projects-tab {
-            .projects {
-                padding: 10rem 4rem;
-                gap: auto;
-            }
-        }
-        #contact-tab {
-            .contact-container {
-                // border: solid 1px bisque;
-                margin: 7.5rem 8.5rem 0 8.5rem !important;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1150px) {
-    // * {
-    //     border: 1px solid red;
-    // }
-    .visible-body {
-        #projects-tab {
-            .projects {
-                padding: 10rem 3rem;
-                gap: auto;
-            }
-        }
-
-        #about-tab {
-            .divisions {
-                .image-and-bgr {
-                    // * {
-                    //     border: solid 1px orange;
-                    // }
-                    .main-img {
-                        &:hover {
-                            + .bgr {
-                                left: 4rem;
-                            }
-                        }
-                    }
-                    .bgr {
-                        left: 5rem;
-                    }
-                }
-                .about-txt {
-                    // border: red 1px solid;
-                    margin-left: 5rem;
-                    // margin-right: .5rem;
-                    padding-top: 5rem;
-                    .hi {
-                        font-size: 5rem;
-                    }
-                    .explanation {
-                        font-size: 1.23rem;
-                    }
-                    .quote-box {
-                        margin: 0rem 2.5rem 0rem 4rem;
-                        font-size: 1.05rem;
-                    //     font-weight: 600;
-                    //     gap: .5rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1041px) {
-    // * {
-    //     border: 1px solid red;
-    // }
-    // .visible-body {
-    //     #projects-tab {
-    //         .projects {
-    //             padding: 10rem 3rem;
-    //             gap: auto;
-    //         }
-    //     }
-    .visible-body {
-        #about-tab {
-            .divisions {
-                .about-txt {
-                    // border: red 1px solid;
-    //                 margin-left: 5rem;
-    //                 // margin-right: .5rem;
-    //                 padding-top: 5rem;
-                    gap: .9rem;
-    //                 .hi {
-    //                     font-size: 5rem;
-    //                 }
-    //                 .explanation {
-    //                     font-size: 1.23rem;
-    //                 }
-    //                 .quote-box {
-    //                     margin: 0rem 2.5rem 0rem 4rem;
-    //                     font-size: 1.05rem;
-    //                 //     font-weight: 600;
-    //                 //     gap: .5rem;
-    //                 }
-    //             }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    // * {
-    //     border: 1px solid red;
-    // }
-    .visible-body {
-        #projects-tab {
-            .projects {
-                grid-template-columns: 1fr;
-
-                padding: 10rem 9rem;
-                // gap: auto;
-            }
-        }
-        // #contact-tab {
-        //     .contact-info {
-        //         p {
-        //             border: solid 1px red;
-        //             margin: 5rem;
-        //         }
-        //     }
-        // }
-        
-        #about-tab {
-            .divisions {
-                .image-and-bgr {
-                    // * {
-                    //     border: solid 1px orange;
-                    // }
-                    .main-img {
-                        &:hover {
-                            + .bgr {
-                                left: 3.5rem;
-                            }
-                        }
-                    }
-                    .bgr {
-                        left: 4rem;
-                        width: 73%;
-                    }
-                }
-                .about-txt {
-                    // border: red 1px solid;
-                    margin-left: 4.5rem;
-                    // margin-right: .5rem;
-                    padding-top: 4.5rem;
-                    gap: .8rem;
-                    .hi {
-                        font-size: 4.5rem;
-                    }
-                    .explanation {
-                        font-size: 1.2rem;
-                    }
-                    .quote-box {
-                        margin: 0rem 2.5rem 0rem 4rem;
-                        font-size: 1.0rem;
-                    //     font-weight: 600;
-                    //     gap: .5rem;
-                    }
-                }
-            }
-            // .profiles-container {
-            //     border: solid 1px silver;
-            //     * {
-            //         border: solid 1px gold;
-            //     }
-            //     // .profiles {
-
-            //     // }
-            // }
-        }
-
-        #contact-tab {
-            .contact-container {
-                margin: 7.5rem 6.5rem 0 6.5rem !important;
-                .main-title {
-                    font-size: 2.1rem;
-                }
-                .contact-content-con {
-                    .left-contact {
-                        .contact-info {
-                            .contact-item {
-                                // border: solid 1px grey;
-                                p {
-                                    // border: solid 1px red;
-                                    padding-left: .5rem !important;
-                                    margin-right: 0 !important;
-                                    text-align: center;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 900px) {
-    .visible-body {
-        #projects-tab {
-            .projects {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        #about-tab {
-            .divisions {
-                border: solid 1px silver;
-                * {
-                    border: solid 1px gold;
-                }
-                .image-and-bgr {
-                    // * {
-                    //     border: solid 1px orange;
-                    // }
-                    .main-img {
-                        &:hover {
-                            + .bgr {
-                                // left: 3.5rem;
-                                // left: 5vw;
-                                left: 6.5vw;
-                            }
-                        }
-                    }
-                    .bgr {
-                        // left: 4rem;
-                        left: 7vw;
-                        width: 73%;
-                    }
-                }
-                .about-txt {
-                //     // border: red 1px solid;
-                    // margin-left: 4rem;
-                    margin-left: 7.4vw;
-                //     // margin-right: .5rem;
-                    // padding-top: 4rem;
-                    padding-top: 7.4vw;
-                    // gap: .8rem;
-                    .hi {
-                        // font-size: 4rem;
-                        font-size: 9vw;
-                    }
-                    .explanation {
-                        font-size: 1.1rem;
-                        font-size: 2vw;
-                    }
-                    .quote-box {
-                //         margin: 0rem 2.5rem 0rem 4rem;
-                        // font-size: .9rem;
-                        font-size: 1.6vw;
-                //     //     font-weight: 600;
-                //     //     gap: .5rem;
+                        margin: auto;
+                        width: 100%;
                     }
                 }
             }
