@@ -508,7 +508,10 @@
             transition: all .4s ease-in-out;
             grid-template-columns: 1fr 1fr;
             padding: 0 3rem;
-
+            min-width: 0;
+            * {
+                min-width: 0;
+            }
             .detail {
                 height: 50vw;
                 margin-bottom: 1rem;
@@ -536,10 +539,11 @@
                 }
 
                 .caption-and-form {
+                    border: solid 1px red;
                     display: flex;
                     flex-direction: column;
                     .detail-caption {
-                        // border: solid silver 1px;
+                        border: solid silver 1px;
                         width: 90%;
                         // height: fit-content;
                         display: grid;
@@ -563,6 +567,8 @@
                         // position: absolute;
                         // top: 4rem;
                         // right: 0;
+                        border: solid 1px gold;
+                        width: 50%;
                         z-index: -10;
                         max-height: 6rem;
                         overflow: hidden;
@@ -1139,9 +1145,9 @@
                             justify-content: space-between;
                             width: 4rem;
                             height: 4rem;
-                            border: 1px solid grey;
+                            // border: 1px solid grey;
                             img {
-                                border: solid 1px burlywood;
+                                // border: solid 1px burlywood;
                                 width: 80%;
                                 height: 80%;
                                 object-fit: contain;

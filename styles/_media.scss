@@ -486,26 +486,100 @@
     }
     .visible-body {
         #projects-tab {
+            .back-btn {
+                width: 6rem;
+                height: 6rem;
+                font-size: 3.3rem;
+                top: 2.1rem;
+                left: 2.1rem;
+            }
+            .nav {
+                height: 10rem;
+                font-size: 1.9rem;
+            }
             .projects {
                 grid-template-columns: 1fr;
+                padding: 10rem 5.5rem;
+                .project {
+                    &:hover {
+                        .hidden-layer {
+                            button {
+                                height: 4rem;
+                                font-size: 1.6rem;
+                            }
+                        }
+                    }
+                }
+            }
+            .project-detail {
+                // > div {
+                //     border: gold 2px dotted;
+                //     // height: fit-content !important;
+                // }
+                grid-template-columns: 2fr;
+                .detail-description {
+                    height: fit-content;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 4rem 1rem ;
+                    
+                    .detail-title {
+                        font-size: 5rem;
+                        margin: 4rem 0 5rem;
+                        justify-self: center;
+                    }
+                    .caption-and-form {
+                        width: 90%;
+                        // margin: 0!important;
+                        .detail-caption {
+                            font-size: 1.8rem;
+                            gap: 0rem;
+                            // border: green 1px dotted;
+                        }
+                        .form-developement {
+                            // border: green 1px dotted;
+                            align-self: center;
+                        }
+                    }
+                    .detail-text {
+                        margin: 2rem;
+                        font-size: 2rem;
+                        // border: dotted 1px red;
+                    }
+                }
+                .detail-photo {
+                    // border: rgb(89, 255, 230) 1px dotted;
+
+                    height: 50rem;
+                    .images-container {
+                        background-image: url("../images/bkgr-for-bdgm.png");
+                    }
+                }
+                .detail-siteplan, .detail-floorplan, .detail-elevation, .detail-section {
+                    height: fit-content;
+                }
+                
             }
         }
         #about-tab {
             .divisions {
-                border: solid 1px red;
-                * {
-                    border: grey solid 1px;
-                }
+                // border: solid 1px red;
+                margin-bottom: 6rem;
+                // * {
+                //     border: grey solid 1px;
+                // }
                 grid-template-columns: 2fr;
                 position: relative;
                 .image-and-bgr {
-                    border: solid green 1px;
+                    // border: solid green 1px;
                     // margin: 4rem;
                     width: 90%;
                     height: 75%;
                     grid-row: 1/2;
-                    margin-top: 5rem;
-                    justify-self: center;
+                    margin-top: 7rem;
+                    justify-self: flex-end;
 
                     .main-img {
                         height: 100%;
@@ -515,14 +589,14 @@
                     }
                 }
                 .about-txt {
-                    border: solid blue 1px;
+                    // border: solid blue 1px;
                     padding-top: 0;
                     // margin: 2rem 4rem;
                     margin: -6rem 4rem 0 4rem;
                     .hi {
                         position: absolute;
-                        top: 2.5rem;
-                        left: 1.5rem;
+                        top: .5rem;
+                        left: 4.5rem;
                     }
 
                     .explanation {
@@ -535,7 +609,36 @@
             }
             .profiles-container {
                 .profiles {
+                    // border: solid 1px red;
+                    padding: 5.5rem 6rem;
                     grid-template-columns: 2fr;
+                    .profile {
+                        .title {
+                            font-size: 2.4rem;
+                            .line, .line2 {
+                                height: .35rem;
+                            }
+                        }
+                        .profile-description {
+                            .sb-ttl-yr {
+                                .sub-title {
+                                    font-size: 1.85rem;
+                                }
+                                .year {
+                                    font-size: 1.6rem;
+                                }
+                                li::marker {
+                                    font-size: 1.8rem;
+                                }
+                            }
+                            h3 {
+                                font-size: 1.7rem;
+                            }
+                        }
+                        .lists {
+                            font-size: 1.85rem;
+                        }
+                    }
                 }
             }
         }
@@ -545,32 +648,90 @@
                 .contact-content-con {
                     flex-direction: column;
                     gap: 6rem;
-                    * {
-                        border: solid 1px grey;
-                    }
+                    // * {
+                    //     // border: solid 1px grey;
+                    // }
                     .left-contact {
-                        border: 1px solid black;
+                        // border: 1px solid black;
                         width: 100%;
                         margin: auto;
                         .contact-msg {
-                            font-size: 1.6rem;
+                            font-size: 2.3rem;
+                            line-height: 3.3rem;
+                            margin-bottom: 2rem;
+                        }
+                        h4 {
+                            font-size: 2.5rem;
+                            margin-bottom: 2rem;
                         }
                         .contact-info {
                             .contact-item {
-                                font-size: 1.4rem;
+                                font-size: 2.4rem;
                                 .icon {
                                     padding: 0 !important;
-                                    grid-template-columns: 10px 1fr;
+                                    grid-template-columns: 16px 1fr;
+                                    i {
+                                        font-size: 1.5rem;
+                                    }
                                 }
                                 p {
+                                    // border-color: red;
                                     margin: .3rem !important;
+                                }
+                            }
+                        }
+                        .contact-btns {
+                            margin: auto;
+                            // border: solid 1px red;
+                            justify-content: center;
+                            .icon-container {
+                                margin-top: 4rem;
+                                width: 4rem;
+                                height: 9rem;
+                                // border: solid 1px grey;
+                                gap: .5rem;
+                                margin-left: .5rem;
+                                margin-right: .5rem;
+                                .icon {
+                                    width: 4rem;
+                                    height: 4rem;
                                 }
                             }
                         }
                     }
                     .right-contact {
-                        margin: auto;
+                        // border: solid 1px burlywood;
+                        margin: -2rem auto 0;
                         width: 100%;
+                        font-size: 1.6rem;
+                        h1 {
+                            font-size: 2.33rem;
+                            justify-self: center;
+                            text-align: center;
+                            margin-bottom: 1.5rem;
+                            .message-icon {
+                                // border: solid 1px gold;
+                                margin-right: 1rem;
+                            }
+                        }
+                        .ic2 {
+                            flex-direction: column;
+                            gap: 1.5rem;
+                            :last-child {
+                                margin-left: 0;
+                            }
+                        }
+                        .submit-btn {
+                            .main-btn {
+                                font-size: 2.1rem;
+                                // justify-self: center;
+                                margin: auto;
+                                &:hover {
+                                    // border: solid green 1px;
+                                    margin: auto;
+                                }
+                            }
+                        }
                     }
                 }
             }
