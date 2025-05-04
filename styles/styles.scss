@@ -348,6 +348,8 @@
             align-items: center;
             justify-content: space-between;
             font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--body-clr);
             position: fixed;
             top: 0;
             z-index: 2;
@@ -549,7 +551,7 @@
                         display: grid;
                         grid-template-columns: 1fr 1fr;
                         padding: 1rem;
-                        grid-gap: 2rem;
+                        gap: 2rem;
                         align-items: start;
                         margin-left: 1rem;
                         margin-bottom: 2rem;
@@ -567,7 +569,7 @@
                         // position: absolute;
                         // top: 4rem;
                         // right: 0;
-                        border: solid 1px gold;
+                        // border: solid 1px gold;
                         width: 50%;
                         z-index: -10;
                         max-height: 6rem;

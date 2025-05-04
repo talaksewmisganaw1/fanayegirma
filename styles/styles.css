@@ -226,6 +226,8 @@ body {
   align-items: center;
   justify-content: space-between;
   font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--body-clr);
   position: fixed;
   top: 0;
   z-index: 2;
@@ -402,7 +404,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
-  grid-gap: 2rem;
+  gap: 2rem;
   align-items: start;
   margin-left: 1rem;
   margin-bottom: 2rem;
@@ -417,7 +419,6 @@ body {
   margin-left: 6rem;
 }
 .visible-body #projects-tab .project-detail .detail-description .caption-and-form .form-developement {
-  border: solid 1px gold;
   width: 50%;
   z-index: -10;
   max-height: 6rem;
@@ -1196,8 +1197,9 @@ body {
     left: 2.1rem;
   }
   .visible-body #projects-tab .nav {
-    height: 10rem;
-    font-size: 1.9rem;
+    height: 12rem;
+    font-size: 2.2rem;
+    font-weight: 600;
   }
   .visible-body #projects-tab .projects {
     grid-template-columns: 1fr;
@@ -1206,6 +1208,12 @@ body {
   .visible-body #projects-tab .projects .project:hover .hidden-layer button {
     height: 4rem;
     font-size: 1.6rem;
+  }
+  .visible-body #projects-tab .projects .project .text-container .sub-titles {
+    font-size: 1.5rem;
+  }
+  .visible-body #projects-tab .projects .project .text-container .description {
+    font-size: 1.4rem;
   }
   .visible-body #projects-tab .project-detail {
     grid-template-columns: 2fr;
@@ -1228,8 +1236,13 @@ body {
     width: 90%;
   }
   .visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption {
-    font-size: 1.8rem;
+    width: 98%;
+    font-size: 2.2rem;
     gap: 0rem;
+    line-height: 3rem;
+  }
+  .visible-body #projects-tab .project-detail .detail-description .caption-and-form .detail-caption .location {
+    margin-top: 2rem;
   }
   .visible-body #projects-tab .project-detail .detail-description .caption-and-form .form-developement {
     align-self: center;
@@ -1355,10 +1368,14 @@ body {
     width: 4rem;
     height: 4rem;
   }
+  .visible-body #contact-tab .contact-container .contact-content-con .left-contact .contact-btns .icon-container .icon:hover {
+    opacity: 1;
+  }
   .visible-body #contact-tab .contact-container .contact-content-con .right-contact {
+    padding-bottom: 14rem;
     margin: -2rem auto 0;
     width: 100%;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   .visible-body #contact-tab .contact-container .contact-content-con .right-contact h1 {
     font-size: 2.33rem;
@@ -1368,6 +1385,9 @@ body {
   }
   .visible-body #contact-tab .contact-container .contact-content-con .right-contact h1 .message-icon {
     margin-right: 1rem;
+  }
+  .visible-body #contact-tab .contact-container .contact-content-con .right-contact .input-control input, .visible-body #contact-tab .contact-container .contact-content-con .right-contact .input-control textarea {
+    padding: 1.2rem 1.5rem;
   }
   .visible-body #contact-tab .contact-container .contact-content-con .right-contact .ic2 {
     flex-direction: column;

@@ -494,8 +494,9 @@
                 left: 2.1rem;
             }
             .nav {
-                height: 10rem;
-                font-size: 1.9rem;
+                height: 12rem;
+                font-size: 2.2rem;
+                font-weight: 600;
             }
             .projects {
                 grid-template-columns: 1fr;
@@ -507,6 +508,14 @@
                                 height: 4rem;
                                 font-size: 1.6rem;
                             }
+                        }
+                    }
+                    .text-container {
+                        .sub-titles {
+                            font-size: 1.5rem;
+                        }
+                        .description {
+                            font-size: 1.4rem;
                         }
                     }
                 }
@@ -534,9 +543,14 @@
                         width: 90%;
                         // margin: 0!important;
                         .detail-caption {
-                            font-size: 1.8rem;
+                            width: 98%;
+                            font-size: 2.2rem;
                             gap: 0rem;
+                            line-height: 3rem;
                             // border: green 1px dotted;
+                            .location {
+                                margin-top: 2rem;
+                            }
                         }
                         .form-developement {
                             // border: green 1px dotted;
@@ -695,15 +709,19 @@
                                 .icon {
                                     width: 4rem;
                                     height: 4rem;
+                                    &:hover {
+                                        opacity: 1;
+                                    }
                                 }
                             }
                         }
                     }
                     .right-contact {
                         // border: solid 1px burlywood;
+                        padding-bottom: 14rem;
                         margin: -2rem auto 0;
                         width: 100%;
-                        font-size: 1.6rem;
+                        font-size: 1.8rem;
                         h1 {
                             font-size: 2.33rem;
                             justify-self: center;
@@ -712,6 +730,11 @@
                             .message-icon {
                                 // border: solid 1px gold;
                                 margin-right: 1rem;
+                            }
+                        }
+                        .input-control {
+                            input, textarea {
+                                padding: 1.2rem 1.5rem;
                             }
                         }
                         .ic2 {
