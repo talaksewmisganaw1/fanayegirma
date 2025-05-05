@@ -479,28 +479,45 @@
     }
 }
 
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 950px) {
     html {
-        font-size: 1.8vw;
+        font-size: 1vw;
+    }
+    .fanaye-logo {
+        top: 4rem;
+        left: 5rem;
+        font-size: 3.4rem;
     }
     .visible-body {
         #projects-tab {
             .back-btn {
                 width: 6rem;
                 height: 6rem;
-                font-size: 3.3rem;
-                top: 2.1rem;
-                left: 2.1rem;
+                font-size: 4rem;
+                top: 4rem;
+                left: 4rem;
             }
-            .nav {
-                height: 12rem;
+            nav {
+                // * {
+                //     border: dotted gold 1px;
+                // }
+                padding-right: 5rem;
+                height: 9rem;
                 font-size: 2.2rem;
                 font-weight: 600;
+                // .theme-changer {
+                //     position: fixed;
+                //     bottom: 10rem;
+                //     right: 4rem;
+                //     i {
+                //         font-size: 4rem;
+                //     }
+                // }
             }
             .projects {
                 grid-template-columns: 1fr;
-                padding: 10rem 5.5rem;
+                padding: 18rem 11rem;
+                // padding: 10rem 5rem;
                 .project {
                     &:hover {
                         .hidden-layer {
@@ -511,28 +528,39 @@
                         }
                     }
                     .text-container {
+                        .title {
+                            font-size: 4.5rem;
+                        }
                         .sub-titles {
-                            font-size: 1.5rem;
+                            .sb-title {
+                                font-size: 2.1rem;
+                            }
                         }
                         .description {
-                            font-size: 1.4rem;
+                            font-size: 2rem;
                         }
                     }
                 }
             }
             .project-detail {
+                // border: solid red 2px;
                 // > div {
                 //     border: gold 2px dotted;
                 //     // height: fit-content !important;
                 // }
                 grid-template-columns: 2fr;
+                .detail {
+                    h2 {
+                        font-size: 4.1rem;
+                    }
+                }
                 .detail-description {
                     height: fit-content;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
-                    padding: 4rem 1rem ;
+                    padding: 4rem 5rem;
                     
                     .detail-title {
                         font-size: 5rem;
@@ -544,9 +572,11 @@
                         // margin: 0!important;
                         .detail-caption {
                             width: 98%;
-                            font-size: 2.2rem;
+                            font-size: 3.7rem;
+
+
                             gap: 0rem;
-                            line-height: 3rem;
+                            line-height: 3.3rem;
                             // border: green 1px dotted;
                             .location {
                                 margin-top: 2rem;
@@ -558,15 +588,15 @@
                         }
                     }
                     .detail-text {
-                        margin: 2rem;
-                        font-size: 2rem;
+                        margin: 2rem 4.5rem;
+                        font-size: 3rem;
                         // border: dotted 1px red;
                     }
                 }
                 .detail-photo {
-                    // border: rgb(89, 255, 230) 1px dotted;
+                    // border: rgb(89, 255, 230) 10px dotted;
 
-                    height: 50rem;
+                    height: 100rem;
                     .images-container {
                         background-image: url("../images/bkgr-for-bdgm.png");
                     }
@@ -580,12 +610,350 @@
         #about-tab {
             .divisions {
                 // border: solid 1px red;
+                margin-top: 15rem;
                 margin-bottom: 6rem;
                 // * {
                 //     border: grey solid 1px;
                 // }
                 grid-template-columns: 2fr;
                 position: relative;
+                .image-and-bgr {
+                    // border: solid green 1px;
+                    // * {
+                    //     border: dotted 1px green;
+                    // }
+                    // margin: 4rem;
+                    width: 90%;
+                    height: 75%;
+                    grid-row: 1/2;
+                    margin-top: 7rem;
+                    justify-self: flex-end;
+
+                    .main-img {
+                        height: 100%;
+                        &:hover {
+                            margin-left: 1.5rem;
+                            + .bgr {
+                                left: 11rem;
+                            }
+                        }
+                    }
+                    .bgr {
+                        height: 100%;
+                        left: 14rem;
+                    }
+                }
+                .about-txt {
+                    // border: solid blue 1px;
+                    padding-top: 3rem;
+                    // margin: 2rem 4rem;
+                    margin: -6rem 6rem 0 10rem;
+                    line-height: 2.9rem;
+                    .hi {
+                        position: absolute;
+                        top: 4rem;
+                        left: 7rem;
+                        font-size: 15rem;
+                    }
+
+                    .explanation {
+                        // border: solid 2px red;
+                        font-size: 3.7rem;
+                        line-height: 5rem;
+                    }
+                    .quote-box {
+                        margin-top: 4rem;
+                        font-size: 3.3rem;
+                        margin-bottom: 14rem;
+                    }
+                }
+            }
+            .profiles-container {
+                .profiles {
+                    // border: solid 1px red;
+                    padding: 9.5rem 11rem;
+                    grid-template-columns: 2fr;
+                    .profile {
+                        margin-top: 4rem;
+                        .title {
+                            font-size: 3.5rem;
+                            .line, .line2 {
+                                height: .35rem;
+                            }
+                        }
+                        .profile-description {
+                            .sb-ttl-yr {
+                                .sub-title {
+                                    font-size: 2.85rem;
+                                }
+                                .year {
+                                    font-size: 2.5rem;
+                                }
+                                li::marker {
+                                    font-size: 2.8rem;
+                                }
+                            }
+                            h3 {
+                                font-size: 2.7rem;
+                            }
+                        }
+                        .lists {
+                            font-size: 2.85rem;
+                        }
+                        .logos {
+                            // border: solid 1px gold;
+                            .logo {
+                                // border: dotted red 1px;
+                                width: 8rem;
+                                height: 8rem;
+                                // img {
+                                //     border: solid black 1px;
+                                // }
+                                .revit-img {
+                                    width: 80%;
+                                    height: 80%;
+                                }
+                            }
+                            .ms-office {
+                                width: 14rem;
+                            }
+                            .sketchup{
+                                width: 18rem;
+                                padding-left: 1.5rem;
+                            }
+                        }
+                    }
+                    // .education {
+                    //     grid-column: 1;
+                    // }
+                }
+            }
+        }
+        #contact-tab {
+            .contact-container {
+                margin: 13rem 12rem !important;
+                .main-title {
+                    font-size: 4.3rem;
+                }
+                .contact-content-con {
+                    flex-direction: column;
+                    gap: 6rem;
+                    // border: solid 1px red;
+                    // * {
+                    //     // border: solid 1px grey;
+                    // }
+                    .left-contact {
+                        width: 100%;
+                        margin: 1rem auto;
+                        .contact-msg {
+                            // border: 1px solid black;
+                            font-size: 3.3rem;
+                            line-height: 3.9rem;
+                            margin-bottom: 2rem;
+                        }
+                        h4 {
+                            // border: 1px solid black;
+                            font-size: 4.2rem;
+                            margin-bottom: 2.2rem;
+                        }
+                        .contact-info {
+                            .contact-item {
+                                font-size: 3.2rem;
+                                .icon {
+                                    // border: 1px solid black;
+                                    padding: 0 !important;
+                                    grid-template-columns: 26px 1fr;
+                                    i {
+                                        // align-self: flex-end;
+                                        font-size: 2.2rem;
+                                    }
+                                }
+                                p {
+                                    // border-color: red;
+                                    margin: .3rem !important;
+                                }
+                            }
+                        }
+                        .contact-btns {
+                            margin: 3rem auto;
+                            justify-content: center;
+                            .icon-container {
+                                // border: solid 1px red;
+                                margin-top: 4rem;
+                                width: 8rem;
+                                height: 18rem;
+                                // border: solid 1px grey;
+                                gap: 2.5rem;
+                                margin-left: 1rem;
+                                margin-right: 1rem;
+                                font-size: 5rem;
+                                .icon {
+                                    width: 7rem;
+                                    height: 7rem;
+                                    &:hover {
+                                        opacity: 1;
+                                    }
+                                }
+                                &:hover {
+                                    width: 16rem;
+                                    height: 22rem;
+                                    .text {
+                                        font-size: 2.7rem;
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                    
+                    .right-contact {
+                        // border: solid 1px burlywood;
+                        padding-bottom: 14rem;
+                        margin: 2rem auto 0;
+                        width: 100%;
+                        font-size: 2.8rem;
+                        h1 {
+                            font-size: 3.9rem;
+                            justify-self: center;
+                            text-align: center;
+                            margin-bottom: 2.5rem;
+                            .message-icon {
+                                // border: solid 1px gold;
+                                margin-right: 2rem;
+                            }
+                        }
+                        .input-control {
+                            input, textarea {
+                                padding: 1.4rem 1.8rem;
+                            }
+                        }
+                        .ic2 {
+                            flex-direction: column;
+                            gap: 1.5rem;
+                            :last-child {
+                                margin-left: 0;
+                            }
+                        }
+                        .submit-btn {
+                            .main-btn {
+                                font-size: 4.2rem;
+                                padding: 1rem 2.1rem;
+                                // justify-self: center;
+                                margin: 1rem auto;
+                                &:hover {
+                                    // border: solid green 1px;
+                                    margin: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    html {
+        font-size: 1.8vw;
+    }
+    .fanaye-logo {
+        top: 5rem;
+        left: 2rem;
+        font-size: 3.4rem;
+    }
+
+    .visible-body {
+        #projects-tab {
+            .back-btn {
+                top: 2.1rem;
+                left: 2.1rem;
+                font-size: 3.3rem;
+            }
+            nav {
+                
+                padding-right: 1rem;
+                height: 11rem;
+                font-size: 2.2rem;
+                font-weight: 600;
+                .theme-changer {
+                    position: fixed;
+                    bottom: 10rem;
+                    right: 4rem;
+                    i {
+                        font-size: 4rem;
+                    }
+                }
+            }
+            .projects {
+                grid-template-columns: 1fr;
+                padding: 18rem 5.5rem;
+                .project {
+                    &:hover {
+                        .hidden-layer {
+                            button {
+                                height: 4rem;
+                                font-size: 1.6rem;
+                            }
+                        }
+                    }
+                    .text-container {
+                        .title {
+                            font-size: 2.5rem;
+                        }
+                        .sub-titles {
+                            .sb-title {
+                                font-size: 1.5rem;
+                            }
+                        }
+                        .description {
+                            font-size: 1.4rem;
+                        }
+                    }
+                }
+            }
+            .project-detail {
+                // > div {
+                //     border: gold 2px dotted;
+                //     // height: fit-content !important;
+                // }
+                grid-template-columns: 2fr;
+                .detail {
+                    h2 {
+                        font-size: 3.2rem;
+                    }
+                }
+                .detail-description {
+                    padding: 4rem 1rem ;
+                    
+                    .caption-and-form {
+                        .detail-caption {
+                            font-size: 2.55rem;
+                            line-height: 3rem;
+                        }
+                    }
+                    .detail-text {
+                        margin: 2rem;
+                        font-size: 2rem;
+                        // border: dotted 1px red;
+                    }
+                }
+                .detail-photo {
+                    // border: rgb(89, 255, 230) 1px dotted;
+                    height: 50rem;
+                    .images-container {
+                        background-image: url("../images/bkgr-for-bdgm.png");
+                    }
+                }
+                // .detail-siteplan, .detail-floorplan, .detail-elevation, .detail-section {
+                //     height: fit-content;
+                // }
+                
+            }
+        }
+        #about-tab {
+            .divisions {
                 .image-and-bgr {
                     // border: solid green 1px;
                     // margin: 4rem;
@@ -597,26 +965,35 @@
 
                     .main-img {
                         height: 100%;
+                        &:hover {
+                            margin-left: 1rem;
+                            + .bgr {
+                                left: 6rem;
+                            }
+                        }
                     }
                     .bgr {
                         height: 100%;
+                        left: 8rem;
                     }
                 }
                 .about-txt {
                     // border: solid blue 1px;
-                    padding-top: 0;
+                    padding-top: 3rem;
                     // margin: 2rem 4rem;
-                    margin: -6rem 4rem 0 4rem;
+                    margin: -6rem 4rem 0 5rem;
                     .hi {
-                        position: absolute;
                         top: .5rem;
                         left: 4.5rem;
+                        font-size: 8rem;
                     }
-
+                    
                     .explanation {
                         font-size: 2rem;
+                        line-height: 2.9rem;
                     }
                     .quote-box {
+                        margin-top: 4rem;
                         font-size: 1.8rem;
                     }
                 }
@@ -624,6 +1001,7 @@
             .profiles-container {
                 .profiles {
                     // border: solid 1px red;
+                    margin-top: 3rem;
                     padding: 5.5rem 6rem;
                     grid-template-columns: 2fr;
                     .profile {
@@ -652,27 +1030,51 @@
                         .lists {
                             font-size: 1.85rem;
                         }
+                        .logos {
+                            // border: solid 1px gold;
+                            .logo {
+                                // border: dotted red 1px;
+                                width: 4rem;
+                                height: 4rem;
+                                // img {
+                                //     border: solid black 1px;
+                                // }
+                                .revit-img {
+                                    width: 65%;
+                                    height: 65%;
+                                }
+                            }
+                            .ms-office {
+                                width: 7.5rem;
+                            }
+                            .sketchup{
+                                width: 9rem;
+                                padding-left: 1rem;
+                            }
+                        }
                     }
                 }
             }
         }
         #contact-tab {
             .contact-container {
-                margin: 8rem 5rem !important;
+                margin: 13rem 5rem !important;
+                .main-title {
+                    font-size: 3rem;
+                }
                 .contact-content-con {
-                    flex-direction: column;
-                    gap: 6rem;
+                    // flex-direction: column;
+                    // gap: 6rem;
                     // * {
                     //     // border: solid 1px grey;
                     // }
                     .left-contact {
                         // border: 1px solid black;
-                        width: 100%;
+                        // width: 100%;
                         margin: auto;
                         .contact-msg {
                             font-size: 2.3rem;
                             line-height: 3.3rem;
-                            margin-bottom: 2rem;
                         }
                         h4 {
                             font-size: 2.5rem;
@@ -695,17 +1097,18 @@
                             }
                         }
                         .contact-btns {
-                            margin: auto;
-                            // border: solid 1px red;
-                            justify-content: center;
+                            margin: 0 auto;
+                            // // border: solid 1px red;
+                            // justify-content: center;
                             .icon-container {
-                                margin-top: 4rem;
+                                // margin-top: 4rem;
                                 width: 4rem;
                                 height: 9rem;
                                 // border: solid 1px grey;
                                 gap: .5rem;
                                 margin-left: .5rem;
                                 margin-right: .5rem;
+                                font-size: 2rem;
                                 .icon {
                                     width: 4rem;
                                     height: 4rem;
@@ -713,19 +1116,26 @@
                                         opacity: 1;
                                     }
                                 }
+                                &:hover {
+                                    width: 8rem;
+                                    height: 6rem;
+                                    .text {
+                                        font-size: 1.3rem;
+                                    }
+                                }
                             }
                         }
                     }
                     .right-contact {
                         // border: solid 1px burlywood;
-                        padding-bottom: 14rem;
+                        padding-bottom: 22rem;
                         margin: -2rem auto 0;
                         width: 100%;
                         font-size: 1.8rem;
                         h1 {
                             font-size: 2.33rem;
-                            justify-self: center;
-                            text-align: center;
+                            // justify-self: center;
+                            // text-align: center;
                             margin-bottom: 1.5rem;
                             .message-icon {
                                 // border: solid 1px gold;
@@ -737,16 +1147,17 @@
                                 padding: 1.2rem 1.5rem;
                             }
                         }
-                        .ic2 {
-                            flex-direction: column;
-                            gap: 1.5rem;
-                            :last-child {
-                                margin-left: 0;
-                            }
-                        }
+                        // .ic2 {
+                        //     flex-direction: column;
+                        //     gap: 1.5rem;
+                        //     :last-child {
+                        //         margin-left: 0;
+                        //     }
+                        // }
                         .submit-btn {
                             .main-btn {
-                                font-size: 2.1rem;
+                                font-size: 2.5rem;
+                                padding: .3rem .9rem;
                                 // justify-self: center;
                                 margin: auto;
                                 &:hover {

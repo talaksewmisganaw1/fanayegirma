@@ -18,6 +18,8 @@ const backBtn = document.querySelector(".back-btn");
 const preloader = document.querySelector(".loader");
 const opening = document.querySelector(".opening");
 const fanayeText = document.querySelector(".name");
+const themeBtn = document.querySelector(".theme-changer");
+
 
 // ***************************
 const projectDetail = document.querySelector(".project-detail");
@@ -38,6 +40,9 @@ window.addEventListener("load", () => {
     // body.style.overflow="hidden";
 })
 
+themeBtn.addEventListener("click", () => {
+    body.classList.toggle("dark-theme");
+})
 
 // tabs.forEach(tab => {
 //     tab.classList.contains("section-tab")?tab.classList.remove("section-tab"):tab.classList.add("section-tab");
