@@ -12,22 +12,40 @@
   --nav-hover: #f6f9f67f;
   --title-clr: #2e3a30;
   --body-clr: #5f6f64;
-  --box-shadow-1: 0 0 30px rgba(0, 0, 0, 0.06);
-  --box-shadow-2: 0 0 10px #add994;
+  --card-shadow-1: 0 0 30px rgba(0, 0, 0, 0.06);
+  --card-shadow-2: 0 0 10px #add994;
   --border-1: 1px solid #b2ef8f;
+  --fanaye-logo-clr: #3c4a3f;
+  --theme-changer-btn-clr: #fede59;
+  --button-shadow: 0 0 10px #add994;
+  --project-btn-border-1: 2px solid #add994;
+  --project-btn-border-2: 1px solid #add994;
 }
 
 .dark-theme {
-  --main-bgr: #f6f9f6;
-  --bgr-clr-2: #ffffff;
-  --nav-bgr: #e4ebe4;
-  --nav-txt-clr: #3c4a3f;
-  --nav-hover: #f6f9f67f;
-  --title-clr: #2e3a30;
-  --body-clr: red;
-  --box-shadow-1: 0 0 30px rgba(0, 0, 0, 0.06);
-  --box-shadow-2: 0 0 10px #add994;
-  --border-1: 1px solid #b2ef8f;
+  --main-bgr: #212121; /* dark background */
+  --bgr-clr-2: #2a2a2a; /* slightly lighter section bg */
+  --nav-bgr: #2c2c2c;
+  --nav-txt-clr: #edf2fc; /* soft light text */
+  --nav-hover: #ff432133; /* semi-transparent accent */
+  --title-clr: #ff4221d8; /* strong accent for headings */
+  --body-clr: #edf2fc; /* readable body text */
+  --card-shadow-1: 0 0 30px rgba(0, 0, 0, 0.4);
+  --card-shadow-2: 0 0 10px #ff4321;
+  --border-1: 1px solid #ff4321;
+  --border-2: 1px solid #edf2fc;
+  --fanaye-logo-clr: #ff4321;
+  --theme-changer-btn-clr: #ff401e;
+  --button-shadow: 0 0 20px #ff4321;
+  --project-btn-border-1: 2px solid #ff4321;
+  --project-btn-border-2: 1px solid #ff4321;
+}
+
+.dark-theme .fanaye-logo {
+  color: #ff4321;
+}
+.dark-theme .theme-changer i {
+  color: blue;
 }
 
 html, body {
@@ -154,12 +172,8 @@ body {
   left: 3rem;
   margin-left: 0;
   padding-left: 0;
-  color: var(--nav-txt-clr);
+  color: var(--fanaye-logo-clr);
   opacity: 0.85;
-}
-
-.dark-theme .theme-changer i {
-  color: black !important;
 }
 
 .visible-body {
@@ -250,11 +264,15 @@ body {
   top: 0;
   z-index: 2;
 }
-.visible-body #projects-tab nav .menus {
+.visible-body #projects-tab nav .menu-and-icon {
   display: flex;
   height: 100%;
 }
-.visible-body #projects-tab nav .menus a {
+.visible-body #projects-tab nav .menu-and-icon .menus {
+  display: flex;
+  height: 100%;
+}
+.visible-body #projects-tab nav .menu-and-icon .menus a {
   text-decoration: none;
   color: var(--nav-txt-clr);
   padding: 2rem;
@@ -262,13 +280,13 @@ body {
   display: flex;
   align-items: center;
 }
-.visible-body #projects-tab nav .menus a:hover {
+.visible-body #projects-tab nav .menu-and-icon .menus a:hover {
   background-color: var(--nav-hover);
 }
-.visible-body #projects-tab nav .menus a:active {
+.visible-body #projects-tab nav .menu-and-icon .menus a:active {
   background-color: var(--main-bgr);
 }
-.visible-body #projects-tab nav .menus .theme-changer {
+.visible-body #projects-tab nav .menu-and-icon .theme-changer {
   background-color: inherit;
   font-size: 2rem;
   margin-left: 1rem;
@@ -285,9 +303,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-.visible-body #projects-tab nav .menus .theme-changer i {
+.visible-body #projects-tab nav .menu-and-icon .theme-changer i {
   background-color: inherit;
-  color: gold;
+  color: var(--theme-changer-btn-clr);
   opacity: 0.7;
 }
 .visible-body #projects-tab .projects {
@@ -300,24 +318,26 @@ body {
 .visible-body #projects-tab .projects .project {
   position: relative;
   background-color: var(--bgr-clr-2);
-  box-shadow: var(--box-shadow-1);
+  box-shadow: var(--card-shadow-1);
   display: grid;
   grid-template-columns: 1fr 1fr;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   transition: all 0.4s ease-in-out;
+  border: 1px solid transparent;
   border-radius: 0.8rem;
 }
 .visible-body #projects-tab .projects .project:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
   border: var(--border-1); /* Light green border */
-  box-shadow: var(--box-shadow-2); /* Glowing effect */
+  box-shadow: var(--card-shadow-2); /* Glowing effect */
 }
 .visible-body #projects-tab .projects .project:hover .hidden-layer button {
+  display: flex;
   visibility: visible;
   transform: translateY(0%);
+  gap: 0.2rem;
 }
 .visible-body #projects-tab .projects .project:hover img {
   transform: scale(1.05);
@@ -374,6 +394,10 @@ body {
   display: flex;
 }
 .visible-body #projects-tab .projects .project .hidden-layer button {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
   position: absolute;
   bottom: 0;
   z-index: 2;
@@ -382,18 +406,23 @@ body {
   text-align: center;
   font-size: 1.3rem;
   background-color: var(--nav-bgr);
-  border: none;
+  color: var(--title-clr);
+  border-top: var(--project-btn-border-1);
+  border-left: var(--project-btn-border-2);
+  border-right: var(--project-btn-border-2);
+  border-bottom: var(--project-btn-border-1);
   border-bottom-left-radius: 0.8rem;
   border-bottom-right-radius: 0.8rem;
   transform: translateY(100%);
   transition: all 0.2s ease-in-out;
 }
-.visible-body #projects-tab .projects .project .hidden-layer button .view-icon {
-  padding-left: 0.5rem;
+.visible-body #projects-tab .projects .project .hidden-layer button .view-icons {
+  padding-left: 0rem;
 }
 .visible-body #projects-tab .projects .project .hidden-layer button:hover {
   cursor: pointer;
-  box-shadow: var(--box-shadow-2) inset;
+  box-shadow: var(--button-shadow) inset;
+  gap: 1rem;
 }
 .visible-body #projects-tab .project-detail {
   display: hidden;
@@ -432,6 +461,7 @@ body {
 .visible-body #projects-tab .project-detail .detail-description .detail-title {
   font-size: 3.2rem;
   margin-bottom: 1.5rem;
+  color: var(--title-clr);
 }
 .visible-body #projects-tab .project-detail .detail-description .caption-and-form {
   display: flex;
@@ -702,11 +732,14 @@ body {
   border: none;
 }
 .visible-body #projects-tab .project-detail .detail-floorplan .download-btn:hover, .visible-body #projects-tab .project-detail .detail-elevation .download-btn:hover, .visible-body #projects-tab .project-detail .detail-section .download-btn:hover {
-  box-shadow: var(--box-shadow-2);
+  box-shadow: var(--button-shadow);
   cursor: pointer;
 }
 .visible-body #projects-tab .project-detail .detail-floorplan .download-btn:hover i, .visible-body #projects-tab .project-detail .detail-elevation .download-btn:hover i, .visible-body #projects-tab .project-detail .detail-section .download-btn:hover i {
   margin-left: 0.2rem;
+}
+.visible-body #projects-tab .project-detail .detail-floorplan .download-btn i, .visible-body #projects-tab .project-detail .detail-elevation .download-btn i, .visible-body #projects-tab .project-detail .detail-section .download-btn i {
+  color: var(--title-clr);
 }
 .visible-body #projects-tab .visible-detail {
   display: grid;
@@ -721,15 +754,17 @@ body {
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
-  border-color: var(--bgr-clr-2);
-  color: var(--body-clr);
+  border: var(--border-1);
+  background-color: var(--bgr-clr-2);
+  color: var(--title-clr);
   z-index: 8;
   transition: transform 0.5s ease-in;
 }
 .visible-body #projects-tab .back-btn:hover {
   background-color: var(--nav-bgr);
-  box-shadow: var(--box-shadow-2);
+  box-shadow: var(--button-shadow);
   cursor: pointer;
+  color: var(--body-clr);
 }
 .visible-body #projects-tab .visible-back-btn {
   transform: scale(1);
@@ -941,6 +976,9 @@ body {
 }
 .visible-body #about-tab .profiles-container .profiles .profile .logos .logo h5 {
   color: rgba(0, 0, 0, 0.731);
+}
+.visible-body #about-tab .profiles-container .profiles .profile .logos .logo .sftwr-name {
+  color: var(--body-clr);
 }
 .visible-body #about-tab .profiles-container .profiles .profile .logos .ms-office {
   width: 7.5rem;
@@ -1192,18 +1230,19 @@ body {
   padding: 0.3rem 0.9rem;
   color: var(--body-clr);
   background-color: var(--nav-bgr);
-  border: var(--border-1);
-  box-shadow: var(--box-shadow-2);
+  border: var(--border-2);
+  box-shadow: 0 0 30px var(--body-clr) inset;
   border-radius: 0.3rem;
   transition: all 0.2s ease-in-out;
 }
 .visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn:hover {
   gap: 1rem;
-  box-shadow: var(--box-shadow-2) inset;
-  border-color: #25D366;
+  box-shadow: var(--button-shadow) inset;
+  border: var(--border-1);
   margin-left: 0.2rem;
 }
 .visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn:hover .btn-icon {
+  color: var(--title-clr);
   display: inline-block;
   transform: skew(10deg, 20deg);
   margin-left: 1rem;
@@ -1211,7 +1250,7 @@ body {
 .visible-body #contact-tab .contact-container .contact-content-con .right-contact .submit-btn .main-btn .btn-icon {
   transition: all 0.4s ease-in-out;
   margin-left: 0.5rem;
-  color: #25D366;
+  color: var(--body-clr);
 }
 .visible-body .active-menu {
   background-color: var(--main-bgr);
